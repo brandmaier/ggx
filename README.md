@@ -58,9 +58,23 @@ print out the command, which you then copy and paste to your code (safer
 option). In the following, I will give you a few examples of how the
 package could be used.
 
-    ggplot(data=iris, mapping=aes(x=Sepal.Length, y=Petal.Length, color=Species))+geom_point()+gg_("Hide legend")
+    ggplot(data=iris, 
+           mapping=aes(x=Sepal.Length, 
+                      y=Petal.Length, color=Species))+
+      geom_point()+
+      gg_("hide legend")
 
-![](man/figures/README-unnamed-chunk-3-1.png)
+![](man/figures/README-example_hide_legend-1.png)
+
+Or,
+
+    ggplot(data=iris, 
+           mapping=aes(x=Sepal.Length, 
+                      y=Petal.Length, color=Species))+
+      geom_point()+
+      gg_("rotate x-axis labels by 90°")
+
+![](man/figures/README-example_rotate_labels-1.png)
 
 If you want to go the safer route, just use the `ggx` package as
 personal assistant that helps you find solutions to common graph
