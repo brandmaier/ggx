@@ -1,0 +1,13 @@
+Package: ggx
+Type: Package
+Title: A Natural Langauge Interface to ggplot2
+Version: 0.1.0
+Author: Andreas M. Brandmaier
+Maintainer: The package maintainer <yourself@somewhere.net>
+Description: More about what it does (maybe more than one line)
+    Use four spaces when indenting paragraphs within the Description.
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+Imports: sets, ggplot2
+RoxygenNote: 7.1.0
