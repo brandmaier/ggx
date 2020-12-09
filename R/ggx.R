@@ -72,7 +72,7 @@ gghelp <- function(wish="", print=TRUE) {
   if (print)
     cat(result)
 
-  return(result)
+  invisible(result)
 
 }
 
