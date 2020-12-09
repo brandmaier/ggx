@@ -1,6 +1,3 @@
-library(sets)
-library(ggplot2)
-
 # match wish with dictionary
 extract_keywords <- function(entry) {
   clauses <- entry[[1]]
