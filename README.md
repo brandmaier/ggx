@@ -9,22 +9,21 @@ Overview
 This package is an add-on to `ggplot2`, the R package for creating
 awesome graphics, which is based on [The Grammar of
 Graphics](https://amzn.to/2ef1eWp). `ggplot2` has changed my life as a
-scientist and developer. However, I have terrible memory and with the
-complexity of `ggplot2`, I forget the same commands again and again. So
-I often end up searching Google for help and then I copy and paste the
-solution into my R script. Eventually, I wondered whether we couldn’t
-save this extra step and just *talk* to ggplot in natural language
-(similar to a Google search query). So, I wrote this package that let’s
-you issue natural language commands that are translated into ggplot
-commands. This is very likely totally bonkers, and this is how it looks:
+scientist and developer. However, I have terrible memory and I forget
+the same commands again and again. Like, how do you rotate axis labels
+again? Or how do you hide the legend…? So I often end up searching the
+net for help and then I copy and paste the solution I find into my R
+script. And I know at least one more person who does this, too.
+Eventually, I wondered whether we couldn’t save this extra step and just
+*talk* to ggplot in natural language (similar to a Google search query).
+So, I wrote this package that lets us issue natural language commands,
+which then are translated into ggplot commands. This is very likely
+totally bonkers, and this is how it looks (watch the `gg_` commands
+below):
 
     ggplot(data=cars,aes(x=speed, y=dist))+geom_point()+
       gg_("rotate x-axis labels by 90 degrees")+
       gg_("increase font size on x-axis")
-    #> Registered S3 method overwritten by 'sets':
-    #>   method        from   
-    #>   print.element ggplot2
-    #> Warning in gghelp(wish = wish, print = FALSE): No clear match found!
 
 ![](man/figures/README-overview_usage-1.png)
 
