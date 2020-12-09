@@ -22,7 +22,7 @@ library(ggx)
 
 `ggplot2` is an R package for creating awesome graphics, based on [The Grammar of Graphics](https://amzn.to/2ef1eWp). It has changed my life as a scientist and developer.  However, I have terrible memory and with the complexity of `ggplot2`, I forget the same commands again and again. So I often end up searching Google for help and then I copy and paste the solution into my R script. Eventually, I wondered whether we couldn't save this extra step and just _talk_ to ggplot in natural language (similar to a Google search query). So, I wrote this package that let's you issue natural language commands that are translated into ggplot commands. This is how it looks:
 
-```{r}
+```{r overview_usage}
 ggplot(data=cars,aes(x=speed, y=dist))+geom_point()+
   gg_("rotate x-axis labels by 90 degrees")
 ```

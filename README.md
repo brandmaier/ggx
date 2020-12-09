@@ -26,7 +26,7 @@ commands. This is how it looks:
     #>   method        from   
     #>   print.element ggplot2
 
-![](man/figures/README-unnamed-chunk-2-1.png)
+![](man/figures/README-overview_usage-1.png)
 
 Disclaimer
 ----------
