@@ -62,6 +62,16 @@ ggplot(data=iris,
   gg_("rotate x-axis labels by 90°")
 ```
 
+Or,
+
+```{r example_increase_fontsize}
+ggplot(data=iris, 
+       mapping=aes(x=Sepal.Length, 
+                  y=Petal.Length, color=Species))+
+  geom_point()+
+  gg_("double the font size on the x-axis")
+```
+
 If you want to go the safer route, just use the `ggx` package as personal assistant that helps you find solutions to common graph formatting problems, like in the following:
 
 ```{r}

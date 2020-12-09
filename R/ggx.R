@@ -18,7 +18,8 @@ dictionary <- list(
   list ( c("remove hide legend"),"theme(legend.position = \"none\")"),
   list(c("x-axis log logarithmic scale"),"scale_x_log10()"),
   list(c("y-axis log logarithmic scale"),"scale_y_log10()"),
-  list(c("increase font size x-axis"),"theme(axis.title.x=element(size=15))")
+  list(c("increase larger double twice font size x-axis"),"theme(axis.title.x=element_text(size=rel(2)))"),
+  list(c("reduce half smaller font size x-axis"),"theme(axis.title.x=element_text(size=rel(.5)))")
 
 )
 

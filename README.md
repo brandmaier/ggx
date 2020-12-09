@@ -75,26 +75,32 @@ Or,
 
 ![](man/figures/README-example_rotate_labels-1.png)
 
+Or,
+
+    ggplot(data=iris, 
+           mapping=aes(x=Sepal.Length, 
+                      y=Petal.Length, color=Species))+
+      geom_point()+
+      gg_("double the font size on the x-axis")
+
+![](man/figures/README-example_increase_fontsize-1.png)
+
 If you want to go the safer route, just use the `ggx` package as
 personal assistant that helps you find solutions to common graph
 formatting problems, like in the following:
 
     gghelp("How can I hide the graph legend?")
-    #> Warning in gghelp("How can I hide the graph legend?"): No clear match found!
-    #> NULL
+    #> theme(legend.position = "none")
 
 Or,
 
     gghelp("I want to flip my x-axis and y-axis.")
     #> coord_flip()
-    #> [1] "coord_flip()"
 
 Or,
 
     gghelp("How can I increase the font size on the x axis?")
-    #> Warning in gghelp("How can I increase the font size on the x axis?"): There were
-    #> no matches!
-    #> NULL
+    #> theme(axis.title.x=element_text(size=rel(2)))
 
 Disclaimer (continued)
 ----------------------
