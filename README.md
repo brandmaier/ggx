@@ -1,8 +1,5 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-    ## Warning: replacing previous import 'vctrs::data_frame' by 'tibble::data_frame'
-    ## when loading 'dplyr'
-
 ggx <img src="man/figures/logo.png" align="right" width="120" />
 ================================================================
 
@@ -18,13 +15,15 @@ solution into my R script. Eventually, I wondered whether we couldn’t
 save this extra step and just *talk* to ggplot in natural language
 (similar to a Google search query). So, I wrote this package that let’s
 you issue natural language commands that are translated into ggplot
-commands. This is how it looks:
+commands. This is very likely totally bonkers, and this is how it looks:
 
     ggplot(data=cars,aes(x=speed, y=dist))+geom_point()+
-      gg_("rotate x-axis labels by 90 degrees")
+      gg_("rotate x-axis labels by 90 degrees")+
+      gg_("increase font size on x-axis")
     #> Registered S3 method overwritten by 'sets':
     #>   method        from   
     #>   print.element ggplot2
+    #> Warning in gghelp(wish = wish, print = FALSE): No clear match found!
 
 ![](man/figures/README-overview_usage-1.png)
 

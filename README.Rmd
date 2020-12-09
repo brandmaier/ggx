@@ -4,7 +4,7 @@ output: github_document
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, message=FALSE, warning=FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
@@ -20,11 +20,12 @@ library(ggx)
 
 ## Overview
 
-`ggplot2` is an R package for creating awesome graphics, based on [The Grammar of Graphics](https://amzn.to/2ef1eWp). It has changed my life as a scientist and developer.  However, I have terrible memory and with the complexity of `ggplot2`, I forget the same commands again and again. So I often end up searching Google for help and then I copy and paste the solution into my R script. Eventually, I wondered whether we couldn't save this extra step and just _talk_ to ggplot in natural language (similar to a Google search query). So, I wrote this package that let's you issue natural language commands that are translated into ggplot commands. This is how it looks:
+`ggplot2` is an R package for creating awesome graphics, based on [The Grammar of Graphics](https://amzn.to/2ef1eWp). It has changed my life as a scientist and developer.  However, I have terrible memory and with the complexity of `ggplot2`, I forget the same commands again and again. So I often end up searching Google for help and then I copy and paste the solution into my R script. Eventually, I wondered whether we couldn't save this extra step and just _talk_ to ggplot in natural language (similar to a Google search query). So, I wrote this package that let's you issue natural language commands that are translated into ggplot commands. This is very likely totally bonkers, and this is how it looks:
 
 ```{r overview_usage}
 ggplot(data=cars,aes(x=speed, y=dist))+geom_point()+
-  gg_("rotate x-axis labels by 90 degrees")
+  gg_("rotate x-axis labels by 90 degrees")+
+  gg_("increase font size on x-axis")
 ```
 
 ## Disclaimer
@@ -41,7 +42,14 @@ devtools::install_github("brandmaier/ggx")
 
 ## Usage Examples
 
+This package has two basic modes of operations. Either you use the `gg_(...)` command to generate ggplot2 elements from natural language and chain them directly to your plotting commands (for lazy people), or you use the package as a reminder of the command and let the package print out the command, which you then copy and paste to your code (safer option). In the following, I will give you a few examples of how the package could be used.
+
 ```{r}
 
 
 ```
+
+## Disclaimer (continued)
+
+This package is just a quick and dirty implementation of a keyword matching algorithm. Do not expect any deeper language processing. Neither is this program a therapist (see Eliza or others). Don't be mad if you hate the package. Just ignore it and write beautiful ggplot code without it. If you like the package, think about contributing to it. Add more questions, keywords, etc. I welcome any contribution, preferably via pull requests on github.
+

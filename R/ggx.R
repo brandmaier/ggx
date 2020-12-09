@@ -17,7 +17,8 @@ dictionary <- list(
   #  list ( c("remove hide legend *title")," theme(legend. title = element_blank()) "),
   list ( c("remove hide legend"),"theme(legend.position = \"none\")"),
   list(c("x-axis log logarithmic scale"),"scale_x_log10()"),
-  list(c("y-axis log logarithmic scale"),"scale_y_log10()")
+  list(c("y-axis log logarithmic scale"),"scale_y_log10()"),
+  list(c("increase font size x-axis"),"theme(axis.title.x=element(size=15))")
 
 )
 
