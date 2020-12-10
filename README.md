@@ -1,7 +1,7 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-ggx <img src="man/figures/logo.png" align="right" width="120" />
-================================================================
+ggx <img src="man/figures/ggx-hexsticker.png" align="right" width="120" />
+==========================================================================
 
 Overview
 --------
@@ -23,9 +23,9 @@ below):
 
     ggplot(data=cars,aes(x=speed, y=dist))+geom_point()+
       gg_("rotate x-axis labels by 90 degrees")+
-      gg_("increase font size on x-axis")
+      gg_("increase font size on x-axis label")
 
-![](man/figures/README-overview_usage-1.png)
+<img src="man/figures/README-overview_usage-1.png" width="50%" />
 
 Disclaimer
 ----------
@@ -63,7 +63,7 @@ package could be used.
       geom_point()+
       gg_("hide legend")
 
-![](man/figures/README-example_hide_legend-1.png)
+<img src="man/figures/README-example_hide_legend-1.png" width="50%" />
 
 Or,
 
@@ -73,7 +73,7 @@ Or,
       geom_point()+
       gg_("rotate x-axis labels by 90°")
 
-![](man/figures/README-example_rotate_labels-1.png)
+<img src="man/figures/README-example_rotate_labels-1.png" width="50%" />
 
 Or,
 
@@ -81,9 +81,9 @@ Or,
            mapping=aes(x=Sepal.Length, 
                       y=Petal.Length, color=Species))+
       geom_point()+
-      gg_("double the font size on the x-axis")
+      gg_("double the font size on the x-axis label")
 
-![](man/figures/README-example_increase_fontsize-1.png)
+<img src="man/figures/README-example_increase_fontsize-1.png" width="50%" />
 
 If you want to go the safer route, just use the `ggx` package as
 personal assistant that helps you find solutions to common graph

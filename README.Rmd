@@ -8,7 +8,8 @@ output: github_document
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.path = "man/figures/README-"
+  fig.path = "man/figures/README-",
+  out.width="50%"
 )
 
 library(ggplot2)
@@ -16,7 +17,7 @@ library(ggx)
 
 ```
 
-# ggx <img src="man/figures/logo.png" align="right" width="120" />
+# ggx <img src="man/figures/ggx-hexsticker.png" align="right" width="120" />
 
 ## Overview
 
