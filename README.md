@@ -31,7 +31,7 @@ below):
       gg_("rotate x-axis labels by 90 degrees")+
       gg_("increase font size on x-axis label")
 
-<img src="man/figures/README-overview_usage-1.png" width="50%" />
+![](man/figures/README-overview_usage-1.png)
 
 Disclaimer
 ----------
@@ -68,7 +68,7 @@ Fisher’s classic iris data:
            mapping=aes(x=Sepal.Length, 
                       y=Petal.Length, color=Species))
 
-<img src="man/figures/README-unnamed-chunk-3-1.png" width="50%" />
+![](man/figures/README-unnamed-chunk-3-1.png)
 
 Now, if we want to hide the legend and don’t remember the ggplot command
 to do so, we can use the `gg_()` short-hand to express our request in
@@ -80,7 +80,7 @@ natural language:
       geom_point()+
       gg_("hide legend")
 
-<img src="man/figures/README-example_hide_legend-1.png" width="50%" />
+![](man/figures/README-example_hide_legend-1.png)
 
 Or, say we want to rotate the labels of the x axis:
 
@@ -90,7 +90,7 @@ Or, say we want to rotate the labels of the x axis:
       geom_point()+
       gg_("rotate x-axis labels by 90°")
 
-<img src="man/figures/README-example_rotate_labels-1.png" width="50%" />
+![](man/figures/README-example_rotate_labels-1.png)
 
 Or,
 
@@ -100,7 +100,7 @@ Or,
       geom_point()+
       gg_("double the font size on the x-axis label")
 
-<img src="man/figures/README-example_increase_fontsize-1.png" width="50%" />
+![](man/figures/README-example_increase_fontsize-1.png)
 
 If you want to go the safer route, just use the `ggx` package as
 personal assistant that helps you find solutions to common graph
