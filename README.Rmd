@@ -9,7 +9,8 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   fig.path = "man/figures/README-",
-  fig.width = 4
+  fig.width = 3,
+  out.width = "50%"
 )
 
 library(ggplot2)
@@ -114,6 +115,20 @@ gghelp("I want to remove my plot legend")
 gghelp("Please hide the legend")
 gghelp("Get rid of that stupid legend")
 ```
+
+## Other Solutions
+
+There is a nice little package called [ggeasy](https://jonocarroll.github.io/ggeasy/) that addresses the same problem. However, it defines yet another set of commands, like this:
+
+```{r eval=FALSE}
+# rotate x axis labels
+ggplot(mtcars, aes(hp, mpg)) + 
+    geom_point() + 
+    easy_rotate_x_labels()
+```
+
+But I keep forgetting those, too ;) 
+
 
 ## Disclaimer (continued)
 

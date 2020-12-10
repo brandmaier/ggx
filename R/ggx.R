@@ -18,9 +18,14 @@ dictionary <- list(
   list ( c("remove hide rid lose legend"),"theme(legend.position = \"none\")"),
   list(c("x-axis log logarithmic scale"),"scale_x_log10()"),
   list(c("y-axis log logarithmic scale"),"scale_y_log10()"),
+  list(c("center title"),"theme(plot.title = element_text(hjust = 0.5))"),
+  list(c("move change set legend bottom","theme(legend.position=\"bottom\")")),
+  list(c("move change set legend position right","theme(legend.position=\"right\")")),
+  list(c("move change set legend position left","theme(legend.position=\"left\")")),
+  list(c("move change set legend position top","theme(legend.position=\"top\")")),
   list(c("increase larger double twice font size x-axis"),"theme(axis.title.x=element_text(size=rel(2)))"),
-  list(c("reduce half smaller font size x-axis"),"theme(axis.title.x=element_text(size=rel(.5)))")
-
+  list(c("reduce half smaller font size x-axis"),"theme(axis.title.x=element_text(size=rel(.5)))"),
+  list(c("remove shape legend", "scale_shape(guide=FALSE)"))
 )
 
 # test case

@@ -31,7 +31,7 @@ below):
       gg_("rotate x-axis labels by 90 degrees")+
       gg_("increase font size on x-axis label")
 
-![](man/figures/README-overview_usage-1.png)
+<img src="man/figures/README-overview_usage-1.png" width="50%" />
 
 Disclaimer
 ----------
@@ -68,7 +68,7 @@ Fisher’s classic iris data:
            mapping=aes(x=Sepal.Length, 
                       y=Petal.Length, color=Species))
 
-![](man/figures/README-unnamed-chunk-3-1.png)
+<img src="man/figures/README-unnamed-chunk-3-1.png" width="50%" />
 
 Now, if we want to hide the legend and don’t remember the ggplot command
 to do so, we can use the `gg_()` short-hand to express our request in
@@ -80,7 +80,7 @@ natural language:
       geom_point()+
       gg_("hide legend")
 
-![](man/figures/README-example_hide_legend-1.png)
+<img src="man/figures/README-example_hide_legend-1.png" width="50%" />
 
 Or, say we want to rotate the labels of the x axis:
 
@@ -90,7 +90,7 @@ Or, say we want to rotate the labels of the x axis:
       geom_point()+
       gg_("rotate x-axis labels by 90°")
 
-![](man/figures/README-example_rotate_labels-1.png)
+<img src="man/figures/README-example_rotate_labels-1.png" width="50%" />
 
 Or,
 
@@ -100,7 +100,7 @@ Or,
       geom_point()+
       gg_("double the font size on the x-axis label")
 
-![](man/figures/README-example_increase_fontsize-1.png)
+<img src="man/figures/README-example_increase_fontsize-1.png" width="50%" />
 
 If you want to go the safer route, just use the `ggx` package as
 personal assistant that helps you find solutions to common graph
@@ -128,6 +128,20 @@ the question is put:
     #> theme(legend.position = "none")
     gghelp("Get rid of that stupid legend")
     #> theme(legend.position = "none")
+
+Other Solutions
+---------------
+
+There is a nice little package called
+[ggeasy](https://jonocarroll.github.io/ggeasy/) that addresses the same
+problem. However, it defines yet another set of commands, like this:
+
+    # rotate x axis labels
+    ggplot(mtcars, aes(hp, mpg)) + 
+        geom_point() + 
+        easy_rotate_x_labels()
+
+But I keep forgetting those, too ;)
 
 Disclaimer (continued)
 ----------------------
