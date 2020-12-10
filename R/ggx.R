@@ -13,6 +13,9 @@ dictionary <- list(
   list( c("rotate x-axis labels 90 degree","rotated x-axis label 90 degrees","rotation x-axis label", "vertical x-axis labels"),
         "theme(axis.text.x = element_text(angle = 90))"),
   list ( c("x-axis bold","x-axis boldface") , "theme(axis.text.x = element_text(face = \"bold\"))"),
+  list( c("rotate y-axis labels 90 degree","rotated y-axis label 90 degrees","rotation y-axis label", "vertical y-axis labels"),
+        "theme(axis.text.y = element_text(angle = 90))"),
+  list ( c("y-axis bold","y-axis boldface") , "theme(axis.text.y = element_text(face = \"bold\"))"),
   list ( c("switch axes","switch x-axis y-axis","flip axes","flip x-axis y-axis","flip coordinates"), "coord_flip()"),
   #  list ( c("remove hide legend *title")," theme(legend. title = element_blank()) "),
   list ( c("remove hide rid lose legend"),"theme(legend.position = \"none\")"),
@@ -25,7 +28,12 @@ dictionary <- list(
   list(c("move change set legend position top","theme(legend.position=\"top\")")),
   list(c("increase larger double twice font size x-axis"),"theme(axis.title.x=element_text(size=rel(2)))"),
   list(c("reduce half smaller font size x-axis"),"theme(axis.title.x=element_text(size=rel(.5)))"),
-  list(c("remove shape legend", "scale_shape(guide=FALSE)"))
+  list(c("increase larger double twice font size y-axis"),"theme(axis.title.y=element_text(size=rel(2)))"),
+  list(c("reduce half smaller font size y-axis"),"theme(axis.title.y=element_text(size=rel(.5)))"),
+  list(c("remove shape legend", "scale_shape(guide=FALSE)")),
+  list(c("remove size legend", "scale_shape(guide=FALSE)")),
+  list(c("meaning of the universe life","geom_label(label=\"42\")"))
+
 )
 
 # test case

@@ -68,7 +68,7 @@ Fisher’s classic iris data:
            mapping=aes(x=Sepal.Length, 
                       y=Petal.Length, color=Species))
 
-<img src="man/figures/README-unnamed-chunk-3-1.png" width="50%" />
+<img src="man/figures/README-example_basic-1.png" width="50%" />
 
 Now, if we want to hide the legend and don’t remember the ggplot command
 to do so, we can use the `gg_()` short-hand to express our request in
