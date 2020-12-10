@@ -66,7 +66,8 @@ Fisher’s classic iris data:
 
     ggplot(data=iris, 
            mapping=aes(x=Sepal.Length, 
-                      y=Petal.Length, color=Species))
+                      y=Petal.Length, color=Species))+
+      geom_point()
 
 <img src="man/figures/README-example_basic-1.png" width="50%" />
 
