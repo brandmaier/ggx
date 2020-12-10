@@ -15,7 +15,7 @@ dictionary <- list(
   list ( c("x-axis bold","x-axis boldface") , "theme(axis.text.x = element_text(face = \"bold\"))"),
   list ( c("switch axes","switch x-axis y-axis","flip axes","flip x-axis y-axis","flip coordinates"), "coord_flip()"),
   #  list ( c("remove hide legend *title")," theme(legend. title = element_blank()) "),
-  list ( c("remove hide legend"),"theme(legend.position = \"none\")"),
+  list ( c("remove hide rid lose legend"),"theme(legend.position = \"none\")"),
   list(c("x-axis log logarithmic scale"),"scale_x_log10()"),
   list(c("y-axis log logarithmic scale"),"scale_y_log10()"),
   list(c("increase larger double twice font size x-axis"),"theme(axis.title.x=element_text(size=rel(2)))"),

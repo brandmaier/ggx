@@ -3,6 +3,12 @@
 ggx <img src="man/figures/ggx-hexsticker.png" align="right" width="120" />
 ==========================================================================
 
+[![Lifecycle:
+stable](https://img.shields.io/badge/lifecycle-experimental-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+[![License: GPL
+v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+![contributions](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)
+
 Overview
 --------
 
@@ -55,7 +61,18 @@ and chain them directly to your plotting commands (for lazy people), or
 you use the package as a reminder of the command and let the package
 print out the command, which you then copy and paste to your code (safer
 option). In the following, I will give you a few examples of how the
-package could be used.
+package could be used. Assume, we start off with basic 2D plot of
+Fisher’s classic iris data:
+
+    ggplot(data=iris, 
+           mapping=aes(x=Sepal.Length, 
+                      y=Petal.Length, color=Species))
+
+<img src="man/figures/README-unnamed-chunk-3-1.png" width="50%" />
+
+Now, if we want to hide the legend and don’t remember the ggplot command
+to do so, we can use the `gg_()` short-hand to express our request in
+natural language:
 
     ggplot(data=iris, 
            mapping=aes(x=Sepal.Length, 
@@ -65,7 +82,7 @@ package could be used.
 
 <img src="man/figures/README-example_hide_legend-1.png" width="50%" />
 
-Or,
+Or, say we want to rotate the labels of the x axis:
 
     ggplot(data=iris, 
            mapping=aes(x=Sepal.Length, 
@@ -101,6 +118,16 @@ Or,
 
     gghelp("How can I increase the font size on the x axis?")
     #> theme(axis.title.x=element_text(size=rel(2)))
+
+Since `ggx` is matching keywords, it allows for some variation in how
+the question is put:
+
+    gghelp("I want to remove my plot legend")
+    #> theme(legend.position = "none")
+    gghelp("Please hide the legend")
+    #> theme(legend.position = "none")
+    gghelp("Get rid of that stupid legend")
+    #> theme(legend.position = "none")
 
 Disclaimer (continued)
 ----------------------
