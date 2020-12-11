@@ -110,7 +110,7 @@ Or,
                       y=Petal.Length, color=Species))+
       geom_point()+
       gg_("paint the plot title in a beautiful orange")+
-      gg_("set the x-axis color to coral")
+      gg_("set the color of the x-axis label to blue")
 
 <img src="man/figures/README-example_fontcolor-1.png" width="50%" />
 
@@ -140,6 +140,14 @@ the question is put:
     #> theme(legend.position = "none")
     gghelp("Get rid of that stupid legend")
     #> theme(legend.position = "none")
+
+Colors and numbers are parsed and inserted into the final commands:
+
+    gghelp("Rotate the x-axis labels by 56 degrees")
+    #> theme(axis.text.x = element_text(angle = 56))
+
+    gghelp("Paint the label of the y-axis in green")
+    #> theme(axis.title.y=element_text(color='green'))
 
 Other Solutions
 ---------------

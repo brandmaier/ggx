@@ -100,7 +100,7 @@ ggplot(data=iris,
                   y=Petal.Length, color=Species))+
   geom_point()+
   gg_("paint the plot title in a beautiful orange")+
-  gg_("set the x-axis color to coral")
+  gg_("set the color of the x-axis label to blue")
 ```
 
 
@@ -128,6 +128,14 @@ Since `ggx` is matching keywords, it allows for some variation in how the questi
 gghelp("I want to remove my plot legend")
 gghelp("Please hide the legend")
 gghelp("Get rid of that stupid legend")
+```
+
+Colors and numbers are parsed and inserted into the final commands:
+
+```{r}
+gghelp("Rotate the x-axis labels by 56 degrees")
+
+gghelp("Paint the label of the y-axis in green")
 ```
 
 ## Other Solutions

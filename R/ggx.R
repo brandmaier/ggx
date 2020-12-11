@@ -41,8 +41,8 @@ dictionary <- list(
   list(c("set title font size #number#"),"theme(title=element_text(size=#number#))"),
 
   list(c("set paint font color title #color#"), "theme(title=element_text(color='#color#'))"),
-  list(c("set paint font color x-axis #color#"), "theme(axis.title.x=element_text(color='#color#'))"),
-  list(c("set paint font color y-axis #color#"), "theme(axis.title.y=element_text(color='#color#'))"),
+  list(c("set paint font color label x-axis #color#"), "theme(axis.title.x=element_text(color='#color#'))"),
+  list(c("set paint font color label y-axis #color#"), "theme(axis.title.y=element_text(color='#color#'))"),
 
   list(c("meaning of the universe life","geom_label(label=\"42\")"))
 
