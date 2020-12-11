@@ -91,7 +91,7 @@ label:
                       y=Petal.Length, color=Species))+
       geom_point()+
       gg_("rotate x-axis labels by 90°")+
-      gg_("set x-axis label to 'sample size'")
+      gg_("set x-axis label to 'Length of Sepal'")
 
 <img src="man/figures/README-example_rotate_labels-1.png" width="50%" />
 
