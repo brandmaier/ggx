@@ -62,8 +62,6 @@ dictionary <- list(
 gghelp <- function(wish="", print=TRUE) {
 
 
-  # make the wish lower-case
-  wish <- tolower(wish)
 
   # parse numbers
   number_matches <- as.numeric(unlist(
@@ -88,6 +86,10 @@ gghelp <- function(wish="", print=TRUE) {
   )
 
   wish <- gsub("[\"|'](.*?)[\"|']", "#quote#", wish )
+
+  # make the wish lower-case (must come after token extraction to
+  # preserve quotes)
+  wish <- tolower(wish)
 
   # some replacements before tokenizing
   wish<-gsub("x.axis","x-axis", wish)
