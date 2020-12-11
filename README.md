@@ -103,6 +103,17 @@ Or,
 
 <img src="man/figures/README-example_increase_fontsize-1.png" width="50%" />
 
+Or,
+
+    ggplot(data=iris, 
+           mapping=aes(x=Sepal.Length, 
+                      y=Petal.Length, color=Species))+
+      geom_point()+
+      gg_("paint the plot title in a beautiful orange")+
+      gg_("set the x-axis color to coral")
+
+<img src="man/figures/README-example_fontcolor-1.png" width="50%" />
+
 If you want to go the safer route, just use the `ggx` package as
 personal assistant that helps you find solutions to common graph
 formatting problems, like in the following:

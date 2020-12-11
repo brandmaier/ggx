@@ -10,11 +10,17 @@ get_num_matches <- function(token, tokenized_wish_set) {
 
 # dictionary
 dictionary <- list(
-  list( c("rotate x-axis labels 90 degree","rotated x-axis label 90 degrees","rotation x-axis label", "vertical x-axis labels"),
+  list( c("rotation x-axis label", "vertical x-axis labels"),
         "theme(axis.text.x = element_text(angle = 90))"),
-  list ( c("x-axis bold","x-axis boldface") , "theme(axis.text.x = element_text(face = \"bold\"))"),
-  list( c("rotate y-axis labels 90 degree","rotated y-axis label 90 degrees","rotation y-axis label", "vertical y-axis labels"),
+  list( c("rotate x-axis labels #number# degree","rotated x-axis label #number# degrees"),
+        "theme(axis.text.x = element_text(angle = #number#))"),
+
+  list( c("rotation y-axis label", "vertical y-axis labels"),
         "theme(axis.text.y = element_text(angle = 90))"),
+  list( c("rotate y-axis labels #number# degree","rotated y-axis label #number# degrees"),
+        "theme(axis.text.y = element_text(angle = #number#))"),
+
+  list ( c("x-axis bold","x-axis boldface") , "theme(axis.text.x = element_text(face = \"bold\"))"),
   list ( c("y-axis bold","y-axis boldface") , "theme(axis.text.y = element_text(face = \"bold\"))"),
   list ( c("switch axes","switch x-axis y-axis","flip axes","flip x-axis y-axis","flip coordinates"), "coord_flip()"),
   #  list ( c("remove hide legend *title")," theme(legend. title = element_blank()) "),
@@ -32,6 +38,12 @@ dictionary <- list(
   list(c("reduce half smaller font size y-axis"),"theme(axis.title.y=element_text(size=rel(.5)))"),
   list(c("remove shape legend", "scale_shape(guide=FALSE)")),
   list(c("remove size legend", "scale_shape(guide=FALSE)")),
+  list(c("set title font size #number#"),"theme(title=element_text(size=#number#))"),
+
+  list(c("set paint font color title #color#"), "theme(title=element_text(color='#color#'))"),
+  list(c("set paint font color x-axis #color#"), "theme(axis.title.x=element_text(color='#color#'))"),
+  list(c("set paint font color y-axis #color#"), "theme(axis.title.y=element_text(color='#color#'))"),
+
   list(c("meaning of the universe life","geom_label(label=\"42\")"))
 
 )
@@ -46,6 +58,23 @@ gghelp <- function(wish="", print=TRUE) {
 
   # make the wish lower-case
   wish <- tolower(wish)
+
+  # parse numbers
+  number_matches <- as.numeric(unlist(
+    regmatches(wish, gregexpr("[[:digit:]]+", wish))
+  ))
+
+  # replace numbers by generic token
+  wish <- gsub("[[:digit:]]+", "#number#", wish)
+
+  # parse color
+  color_regexp <- paste0("(",paste0(colors(),"",collapse="|"),")")
+  color_matches <- unlist(
+    regmatches(wish, gregexpr(color_regexp, wish))
+  )
+
+  # replace color by generic token
+  wish <- gsub(color_regexp, "#color#", wish )
 
   # some replacements before tokenizing
   wish<-gsub("x.axis","x-axis", wish)
@@ -83,6 +112,20 @@ gghelp <- function(wish="", print=TRUE) {
   }
 
   result <- dictionary[[best_match_index]][[2]]
+
+  # replace generic token by actual numbers
+  if (length(number_matches)>0) {
+    result <- gsub("#number#", number_matches[1], result)
+  }
+
+  # replace generic token by actual color
+  if (length(color_matches)>0) {
+    result <- gsub("#color#", color_matches[1], result)
+  }
+  # add some default for unknown tokens. TODO: think of something smarter
+  if (result=="theme(axis.text.x = element_text(angle = #number#))") {
+    result <- "theme(axis.text.x = element_text(angle = 90)"
+  }
 
   if (print)
     cat(result)
