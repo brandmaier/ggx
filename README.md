@@ -83,13 +83,15 @@ natural language:
 
 <img src="man/figures/README-example_hide_legend-1.png" width="50%" />
 
-Or, say we want to rotate the labels of the x axis:
+Or, say we want to rotate the labels of the x axis and rename the axis
+label:
 
     ggplot(data=iris, 
            mapping=aes(x=Sepal.Length, 
                       y=Petal.Length, color=Species))+
       geom_point()+
-      gg_("rotate x-axis labels by 90°")
+      gg_("rotate x-axis labels by 90°")+
+      gg_("set x-axis label to 'sample size'")
 
 <img src="man/figures/README-example_rotate_labels-1.png" width="50%" />
 

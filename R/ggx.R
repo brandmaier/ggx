@@ -44,6 +44,12 @@ dictionary <- list(
   list(c("set paint font color label x-axis #color#"), "theme(axis.title.x=element_text(color='#color#'))"),
   list(c("set paint font color label y-axis #color#"), "theme(axis.title.y=element_text(color='#color#'))"),
 
+  list(c("remove plot margin"),"theme(plot.margin = unit(c(0,0, 0, 0), \"npc\"))"),
+
+  list(c("set title #quote#"),"ggtitle(#quote#)"),
+  list(c("set x-axis label #quote#"),"xlab(#quote#)"),
+  list(c("set y-axis label #quote#"),"ylab(#quote#)"),
+
   list(c("meaning of the universe life","geom_label(label=\"42\")"))
 
 )
@@ -75,6 +81,13 @@ gghelp <- function(wish="", print=TRUE) {
 
   # replace color by generic token
   wish <- gsub(color_regexp, "#color#", wish )
+
+  # parse quote
+  quote_matches <- unlist(
+    regmatches(wish, gregexpr("[\"|'](.*?)[\"|']", wish))
+  )
+
+  wish <- gsub("[\"|'](.*?)[\"|']", "#quote#", wish )
 
   # some replacements before tokenizing
   wish<-gsub("x.axis","x-axis", wish)
@@ -122,6 +135,12 @@ gghelp <- function(wish="", print=TRUE) {
   if (length(color_matches)>0) {
     result <- gsub("#color#", color_matches[1], result)
   }
+
+  # replace generic token by actual quote
+  if (length(quote_matches)>0) {
+    result <- gsub("#quote#", quote_matches[1], result)
+  }
+
   # add some default for unknown tokens. TODO: think of something smarter
   if (result=="theme(axis.text.x = element_text(angle = #number#))") {
     result <- "theme(axis.text.x = element_text(angle = 90)"
