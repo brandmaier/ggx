@@ -1,4 +1,8 @@
 # match wish with dictionary
+#
+# @param entry Character. String to split.
+# @return vector of keywords
+#
 extract_keywords <- function(entry) {
   clauses <- entry[[1]]
   sapply(clauses, function(x){strsplit(x,split = " ")})
@@ -54,14 +58,13 @@ dictionary <- list(
 
 )
 
-# test case
-#    wish <- "I want my x-axis to be rotated"
-#wish <- "make my x-axis show in boldface"
-
+#' Helps you find a ggplot command for formatting the plot.
+#'
+#' @param wish Character. A natural language command to ggplot2.
+#' @param print Boolean. Print out the command or just return it.
+#
 #' @export
 gghelp <- function(wish="", print=TRUE) {
-
-
 
   # parse numbers
   number_matches <- as.numeric(unlist(
@@ -155,6 +158,11 @@ gghelp <- function(wish="", print=TRUE) {
 
 }
 
+#' Generic command to transform a query in natural language
+#' into a ggplot2 command.
+#' 
+#' @param wish Character.
+#'
 #' @export
 gg_ <- function(wish=NULL, ...) {
   x <- eval(parse(text=gghelp(wish=wish, print=FALSE)))
