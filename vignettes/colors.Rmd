@@ -1,0 +1,44 @@
+---
+title: "Colors"
+author: "Andreas M. Brandmaier"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Colors}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+
+library(ggplot2)
+library(ggx)
+```
+
+# Colors
+
+Here is an example of how you can formulate queries related to theme-related colors using `gg_`-commands:
+
+```{r message=FALSE}
+ggplot(data=iris, 
+       mapping=aes(x=Sepal.Length, 
+                  y=Petal.Length, color=Species))+
+  ggtitle("Iris")+
+  geom_point()+
+  gg_("paint the title red")+
+  gg_("paint the x-axis label in green")+
+  gg_("also, I want a purple y-axis label")
+```
+
+
+# Valid Colors
+
+The `ggx` package matches valid base R colors. The list of all valid colors, such as those:
+
+```{r}
+head(colors(), n=20)
+```
