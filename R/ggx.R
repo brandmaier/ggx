@@ -90,6 +90,12 @@ gghelp <- function(wish="", print=TRUE) {
 
   wish <- gsub("[\"|'](.*?)[\"|']", "#quote#", wish )
 
+  # match target (not yet used)
+  targets <- c()
+  if (length(grep("x.axis", wish, ignore.case = TRUE)) > 0) targets <- c(targets, "x-axis")
+  if (length(grep("y.axis", wish, ignore.case = TRUE)) > 0) targets <- c(targets, "y-axis")
+  if (length(grep("legend", wish, ignore.case = TRUE)) > 0) targets <- c(targets, "legend")
+
   # make the wish lower-case (must come after token extraction to
   # preserve quotes)
   wish <- tolower(wish)
@@ -160,7 +166,7 @@ gghelp <- function(wish="", print=TRUE) {
 
 #' Generic command to transform a query in natural language
 #' into a ggplot2 command.
-#' 
+#'
 #' @param wish Character.
 #'
 #' @export
