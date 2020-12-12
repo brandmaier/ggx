@@ -3,5 +3,6 @@ pkgdown: 1.5.1
 pkgdown_sha: ~
 articles:
   colors: colors.html
-last_built: 2020-12-12T18:35Z
+  labels: labels.html
+last_built: 2020-12-12T19:58Z
 

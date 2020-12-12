@@ -104,7 +104,7 @@ gghelp <- function(wish="", print=TRUE) {
   wish<-gsub("x.axis","x-axis", wish)
   wish<-gsub("y.axis","y-axis", wish)
   wish<-gsub("°"," degrees", wish)
-  wish<-gsub("!|\\.|\\?|;", "", wish)
+  wish<-gsub("!|\\.|\\?|;|,", "", wish)
 
   # tokenize wish
   tokenized_wish <- strsplit(wish, " ")[[1]]
