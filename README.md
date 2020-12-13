@@ -112,6 +112,7 @@ Or,
            mapping=aes(x=Sepal.Length, 
                       y=Petal.Length, color=Species))+
       geom_point()+
+      gg_("add 'Hello World' as plot title")+
       gg_("paint the plot title in a beautiful orange")+
       gg_("set the color of the x-axis label to blue")
 
