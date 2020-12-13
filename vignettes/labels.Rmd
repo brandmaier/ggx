@@ -44,7 +44,8 @@ ggplot(data=iris,
   gg_("Rotate the x-axis labels by 32°")+
   gg_("Rotate the y-axis labels by 172 degrees")
 ```
-# Colors
+
+## Colors
 
 ```{r}
 ggplot(data=iris, 
@@ -52,6 +53,6 @@ ggplot(data=iris,
                   y=Petal.Length, color=Species))+
   ggtitle("Iris")+
   geom_point()+
-  gg_("Paint the x-axis label in coral.°")+
+  gg_("Paint the x-axis label in coral.")+
   gg_("The label of the y-axis should appear in purple.")
 ```

@@ -4,5 +4,6 @@ pkgdown_sha: ~
 articles:
   colors: colors.html
   labels: labels.html
-last_built: 2020-12-13T09:46Z
+  legend: legend.html
+last_built: 2020-12-13T19:11Z
 

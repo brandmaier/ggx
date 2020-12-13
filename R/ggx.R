@@ -42,9 +42,10 @@ dictionary <- list(
   list(c("reduce half smaller font size y-axis"),"theme(axis.title.y=element_text(size=rel(.5)))"),
   list(c("remove shape legend", "scale_shape(guide=FALSE)")),
   list(c("remove size legend", "scale_shape(guide=FALSE)")),
+  list(c("set legend font size #number#"),"theme(legend.text=element_text(size=#number#))"),
   list(c("set title font size #number#"),"theme(title=element_text(size=#number#))"),
-
-  list(c("set paint font color title #color#"), "theme(title=element_text(color='#color#'))"),
+  list(c("set legend title font size #number#"),"theme(legend.title=element_text(size=#number#))"),
+  list(c("set paint font color title #color#"), "theme(plot.title=element_text(color='#color#'))"),
   list(c("set paint font color label x-axis #color#"), "theme(axis.title.x=element_text(color='#color#'))"),
   list(c("set paint font color label y-axis #color#"), "theme(axis.title.y=element_text(color='#color#'))"),
 
