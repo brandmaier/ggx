@@ -67,6 +67,8 @@ dictionary <- list(
 #' @export
 gghelp <- function(wish="", print=TRUE) {
 
+  is (!is.character(wish)) stop("Only character input is valid")
+
   # parse numbers
   number_matches <- as.numeric(unlist(
     regmatches(wish, gregexpr("[[:digit:]]+", wish))
@@ -76,7 +78,7 @@ gghelp <- function(wish="", print=TRUE) {
   wish <- gsub("[[:digit:]]+", "#number#", wish)
 
   # parse color
-  color_regexp <- paste0("(",paste0(colors(),"",collapse="|"),")")
+  color_regexp <- paste0("(",paste0(grDevices::colors(),"",collapse="|"),")")
   color_matches <- unlist(
     regmatches(wish, gregexpr(color_regexp, wish))
   )
@@ -171,7 +173,7 @@ gghelp <- function(wish="", print=TRUE) {
 #' @param wish Character.
 #'
 #' @export
-gg_ <- function(wish=NULL, ...) {
+gg_ <- function(wish=NULL) {
   x <- eval(parse(text=gghelp(wish=wish, print=FALSE)))
   return(x)
 }
