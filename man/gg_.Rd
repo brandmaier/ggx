@@ -5,7 +5,7 @@
 \title{Generic command to transform a query in natural language
 into a ggplot2 command.}
 \usage{
-gg_(wish = NULL, ...)
+gg_(wish = NULL)
 }
 \arguments{
 \item{wish}{Character.}

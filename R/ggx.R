@@ -67,7 +67,7 @@ dictionary <- list(
 #' @export
 gghelp <- function(wish="", print=TRUE) {
 
-  is (!is.character(wish)) stop("Only character input is valid")
+  if (!is.character(wish)) { stop("Only character input is valid") }
 
   # parse numbers
   number_matches <- as.numeric(unlist(
