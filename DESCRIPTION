@@ -4,8 +4,7 @@ Title: A Natural Langauge Interface to ggplot2
 Version: 0.1.0
 Author: Andreas M. Brandmaier
 Maintainer: Andreas M. Brandmaier <andy@brandmaier.de>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Description: This package is an add-on to ggplot2. ggplot2 has changed my life as a scientist and developer. However, I have terrible memory and I forget the same commands again and again. Like, how do you rotate axis labels again? Or how do you hide the legend…? So I often end up searching the net for help and then I copy and paste the solution I find into my R script. And I know at least one more person who does this, too. Eventually, I wondered whether we couldn’t save this extra step and just talk to ggplot in natural language (similar to a Google search query). So, I wrote this package that lets us issue natural language commands, which then are translated into ggplot commands.
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
