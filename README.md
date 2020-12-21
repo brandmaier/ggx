@@ -56,14 +56,15 @@ Installation
 Usage Examples
 --------------
 
-This package has two basic modes of operations. Either you use the
-`gg_(...)` command to generate ggplot2 elements from natural language
-and chain them directly to your plotting commands (for lazy people), or
-you use the package as a reminder of the command and let the package
-print out the command, which you then copy and paste to your code (safer
-option). In the following, I will give you a few examples of how the
-package could be used. Assume, we start off with basic 2D plot of
-Fisher’s classic iris data:
+You can find more examples and use cases on the package website:
+![here](https://brandmaier.github.io/ggx/) This package has two basic
+modes of operations. Either you use the `gg_(...)` command to generate
+ggplot2 elements from natural language and chain them directly to your
+plotting commands (for lazy people), or you use the package as a
+reminder of the command and let the package print out the command, which
+you then copy and paste to your code (safer option). In the following, I
+will give you a few examples of how the package could be used. Assume,
+we start off with basic 2D plot of Fisher’s classic iris data:
 
     ggplot(data=iris, 
            mapping=aes(x=Sepal.Length, 

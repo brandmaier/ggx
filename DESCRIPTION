@@ -2,8 +2,8 @@ Package: ggx
 Type: Package
 Title: A Natural Langauge Interface to ggplot2
 Version: 0.1.0
-Author: Andreas M. Brandmaier
-Maintainer: Andreas M. Brandmaier <andy@brandmaier.de>
+Authors@R: person("Andreas M.", "Brandmaier", email = "andy@brandmaier.de",
+  role = c("aut", "cre"))
 Description: ggplot2 offers a fantastic toolbox for creating and formatting graphs. However, I have terrible memory and I forget the same commands again and again. Like, how do you rotate the x-axis labels again? Or how do you hide the legend...? ggx allows you to issue natural language commands related to theme-related styling of plots (colors, font, and such), which then are translated into valid ggplot commands.
 License: GPL-3
 Encoding: UTF-8
