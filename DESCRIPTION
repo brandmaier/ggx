@@ -4,9 +4,13 @@ Title: A Natural Langauge Interface to ggplot2
 Version: 0.1.0
 Author: Andreas M. Brandmaier
 Maintainer: Andreas M. Brandmaier <andy@brandmaier.de>
-Description: This package is an add-on to ggplot2. ggplot2 has changed my life as a scientist and developer. However, I have terrible memory and I forget the same commands again and again. Like, how do you rotate axis labels again? Or how do you hide the legend…? So I often end up searching the net for help and then I copy and paste the solution I find into my R script. And I know at least one more person who does this, too. Eventually, I wondered whether we couldn’t save this extra step and just talk to ggplot in natural language (similar to a Google search query). So, I wrote this package that lets us issue natural language commands, which then are translated into ggplot commands.
+Description: ggplot2 offers a fantastic toolbox for creating and formatting graphs. However, I have terrible memory and I forget the same commands again and again. Like, how do you rotate the x-axis labels again? Or how do you hide the legend...? ggx allows you to issue natural language commands related to theme-related styling of plots (colors, font, and such), which then are translated into valid ggplot commands.
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
 Imports: sets, ggplot2
 RoxygenNote: 7.1.0
+VignetteBuilder: knitr
+Suggests:
+    knitr,
+    rmarkdown
