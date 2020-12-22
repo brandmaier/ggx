@@ -57,7 +57,7 @@ Usage Examples
 --------------
 
 You can find more examples and use cases on the package website:
-![here](https://brandmaier.github.io/ggx/) This package has two basic
+[here](https://brandmaier.github.io/ggx/) This package has two basic
 modes of operations. Either you use the `gg_(...)` command to generate
 ggplot2 elements from natural language and chain them directly to your
 plotting commands (for lazy people), or you use the package as a
