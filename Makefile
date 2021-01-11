@@ -33,3 +33,5 @@ clean:
 vignette:
 	Rscript -e 'devtools::build_vignettes()'
 
+winbuilder:
+	lftp -c "open ftp://win-builder.r-project.org; put -O R-release/ ../$(PKGNAME)_$(PKGVERS).tar.gz" 
