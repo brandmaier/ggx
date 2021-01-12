@@ -8,6 +8,9 @@ extract_keywords <- function(entry) {
   sapply(clauses, function(x){strsplit(x,split = " ")})
 }
 
+#
+# returns the number of matches of tokens in the set
+#
 get_num_matches <- function(token, tokenized_wish_set) {
   sum(tokenized_wish_set %in% sets::as.set(token))
 }
@@ -128,14 +131,14 @@ gghelp <- function(wish="", print=TRUE) {
   total_matches <- sum(vector_of_matches)
   if ((total_matches) == 0) {
     warning("There were no matches!")
-    return(NULL)
+    return(    invisible(NULL) )
   }
 
   best_match_index <- which.max(vector_of_matches)
 
   if (vector_of_matches[best_match_index]==1) {
     warning("No clear match found!")
-    return(NULL)
+    return(    invisible(NULL))
   }
 
   result <- dictionary[[best_match_index]][[2]]
@@ -160,10 +163,26 @@ gghelp <- function(wish="", print=TRUE) {
     result <- "theme(axis.text.x = element_text(angle = 90)"
   }
 
+  # if there are still tokens left
+  if ( gregexpr("#number#", result)[[1]][1] > -1 ) {
+    warning("There seems to be a number missing in your request.")
+    return(    invisible(NULL))
+  }
+  # if there are still tokens left
+  if ( gregexpr("#color#", result)[[1]][1] > -1 ) {
+    warning("There seems to be a color missing in your request!")
+    return(    invisible(NULL))
+  }
+  # if there are still tokens left
+  if ( gregexpr("#quote#", result)[[1]][1] > -1 ) {
+    warning("There seems to be a quoted string missing in your request!")
+    return(    invisible(NULL))
+  }
+
   if (print)
     cat(result)
 
-  invisible(result)
+  return( invisible(result) )
 
 }
 
@@ -174,7 +193,14 @@ gghelp <- function(wish="", print=TRUE) {
 #'
 #' @export
 gg_ <- function(wish=NULL) {
-  x <- eval(parse(text=gghelp(wish=wish, print=FALSE)))
-  return(x)
+  ggresult <- gghelp(wish=wish, print=FALSE)
+
+  if (is.null(ggresult)) {
+    return(NULL)
+  } else {
+    x <- eval(parse(text=ggresult))
+    return(x)
+  }
+
 }
 
