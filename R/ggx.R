@@ -1,4 +1,4 @@
-# match wish with dictionary
+# match query with dictionary
 #
 # @param entry Character. String to split.
 # @return vector of keywords
@@ -11,8 +11,8 @@ extract_keywords <- function(entry) {
 #
 # returns the number of matches of tokens in the set
 #
-get_num_matches <- function(token, tokenized_wish_set) {
-  sum(tokenized_wish_set %in% sets::as.set(token))
+get_num_matches <- function(token, tokenized_query_set) {
+  sum(tokenized_query_set %in% sets::as.set(token))
 }
 
 # dictionary
@@ -62,59 +62,78 @@ dictionary <- list(
 
 )
 
-#' Helps you find a ggplot command for formatting the plot.
+#' Converts a natural language query into a 'ggplot2' command.
 #'
-#' @param wish Character. A natural language command to ggplot2.
+#' @description Converts a natural language query into a 'ggplot2' command string. Queries should be related to the styling of the plot, such as, axis label font size, axis label title, legend, and similar.
+#'
+#' @param query Character. A natural language command related to the styling of a ggplot.
 #' @param print Boolean. Print out the command or just return it.
-#
+#'
+#' @return Returns a string if there is a matching ggplot command in the database. Otherwise returns NULL.
+#'
+#' @examples
+#'
+#' gghelp("rotate x-axis labels by 90 degrees")
+#'
+#' gghelp("increase font size on x-axis label")
+#'
+#' gghelp("set x-axis label to 'Length of Sepal'")
+#'
+#'
+#' @details 'gghelp' maintains a database of keywords that match typical queries related to styling
+#' 'ggplot2' graphs. Based on the users natural language query, the function tries to find the best match
+#' and then returns the ggplot2 command as string.
+#'
+#' @seealso \code{\link{gg_}}
+#'
 #' @export
-gghelp <- function(wish="", print=TRUE) {
+gghelp <- function(query="", print=TRUE) {
 
-  if (!is.character(wish)) { stop("Only character input is valid") }
+  if (!is.character(query)) { stop("Only character input is valid") }
 
   # parse numbers
   number_matches <- as.numeric(unlist(
-    regmatches(wish, gregexpr("[[:digit:]]+", wish))
+    regmatches(query, gregexpr("[[:digit:]]+", query))
   ))
 
   # replace numbers by generic token
-  wish <- gsub("[[:digit:]]+", "#number#", wish)
+  query <- gsub("[[:digit:]]+", "#number#", query)
 
   # parse color
   color_regexp <- paste0("(",paste0(grDevices::colors(),"",collapse="|"),")")
   color_matches <- unlist(
-    regmatches(wish, gregexpr(color_regexp, wish))
+    regmatches(query, gregexpr(color_regexp, query))
   )
 
   # replace color by generic token
-  wish <- gsub(color_regexp, "#color#", wish )
+  query <- gsub(color_regexp, "#color#", query )
 
   # parse quote
   quote_matches <- unlist(
-    regmatches(wish, gregexpr("[\"|'](.*?)[\"|']", wish))
+    regmatches(query, gregexpr("[\"|'](.*?)[\"|']", query))
   )
 
-  wish <- gsub("[\"|'](.*?)[\"|']", "#quote#", wish )
+  query <- gsub("[\"|'](.*?)[\"|']", "#quote#", query )
 
   # match target (not yet used)
   targets <- c()
-  if (length(grep("x.axis", wish, ignore.case = TRUE)) > 0) targets <- c(targets, "x-axis")
-  if (length(grep("y.axis", wish, ignore.case = TRUE)) > 0) targets <- c(targets, "y-axis")
-  if (length(grep("legend", wish, ignore.case = TRUE)) > 0) targets <- c(targets, "legend")
+  if (length(grep("x.axis", query, ignore.case = TRUE)) > 0) targets <- c(targets, "x-axis")
+  if (length(grep("y.axis", query, ignore.case = TRUE)) > 0) targets <- c(targets, "y-axis")
+  if (length(grep("legend", query, ignore.case = TRUE)) > 0) targets <- c(targets, "legend")
 
-  # make the wish lower-case (must come after token extraction to
+  # make the query lower-case (must come after token extraction to
   # preserve quotes)
-  wish <- tolower(wish)
+  query <- tolower(query)
 
   # some replacements before tokenizing
-  wish<-gsub("x.axis","x-axis", wish)
-  wish<-gsub("y.axis","y-axis", wish)
-  wish<-gsub("\u0176"," degrees", wish)
-  wish<-gsub("!|\\.|\\?|;|,", "", wish)
+  query<-gsub("x.axis","x-axis", query)
+  query<-gsub("y.axis","y-axis", query)
+  query<-gsub("\u0176"," degrees", query)
+  query<-gsub("!|\\.|\\?|;|,", "", query)
 
-  # tokenize wish
-  tokenized_wish <- strsplit(wish, " ")[[1]]
-  tokenized_wish_set <- sets::as.set(tokenized_wish)
+  # tokenize query
+  tokenized_query <- strsplit(query, " ")[[1]]
+  tokenized_query_set <- sets::as.set(tokenized_query)
 
   # tokenize keywords (list of list of vector of character)
   # depth 1 (list) corresponds to the topic
@@ -124,7 +143,7 @@ gghelp <- function(wish="", print=TRUE) {
 
   # matches
   vector_of_matches <- sapply(tokenized_keywords, function(topic) {
-    x <- lapply(topic, get_num_matches, tokenized_wish_set=tokenized_wish_set)
+    x <- lapply(topic, get_num_matches, tokenized_query_set=tokenized_query_set)
     max(simplify2array(x))
   })
 
@@ -179,21 +198,44 @@ gghelp <- function(wish="", print=TRUE) {
     return(    invisible(NULL))
   }
 
-  if (print)
-    cat(result)
+  if (print) {
+    cat(result, "\n")
+  }
 
   return( invisible(result) )
 
 }
 
-#' Generic command to transform a query in natural language
-#' into a ggplot2 command.
+#' @title Transforms a  natural language query into a gg object
 #'
-#' @param wish Character.
+#' @description Converts a natural language query into a 'gg' object, which can be directly chained to a 'ggplot'-call. Queries should be related to the styling of the plot, such as, axis label font size, axis label title, legend, and similar.
+#'
+#'
+#' @param query Character. A natural language command related to the styling of a ggplot.
+#'
+#' @return An object of class 'gg' from the internal class system of 'ggplot2'
+#'
+#' @examples
+#'
+#' \dontrun{
+#' library(ggplot2)
+#' ggplot(data=iris,
+#' mapping=aes(x=Sepal.Length,
+#'            y=Petal.Length, color=Species))+
+#'  geom_point()+
+#'  gg_("rotate x-axis labels by 90°")+
+#'  gg_("set x-axis label to 'Length of Sepal'")
+#'  }
+#'
+#' @seealso \code{\link{gghelp}}
+#'
+#' @details 'gg_' calls the function 'gghelp', which maintains a database of keywords that match typical queries related to styling
+#' 'ggplot2' graphs. Based on the users natural language query, the function tries to find the best match
+#' and then returns the ggplot2 command, such that the result of a call to 'gg_' can be chained directly to a 'ggplot()' call.
 #'
 #' @export
-gg_ <- function(wish=NULL) {
-  ggresult <- gghelp(wish=wish, print=FALSE)
+gg_ <- function(query=NULL) {
+  ggresult <- gghelp(query=query, print=FALSE)
 
   if (is.null(ggresult)) {
     return(NULL)

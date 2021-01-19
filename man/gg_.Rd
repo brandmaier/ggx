@@ -2,15 +2,37 @@
 % Please edit documentation in R/ggx.R
 \name{gg_}
 \alias{gg_}
-\title{Generic command to transform a query in natural language
-into a ggplot2 command.}
+\title{Transforms a  natural language query into a gg object}
 \usage{
-gg_(wish = NULL)
+gg_(query = NULL)
 }
 \arguments{
-\item{wish}{Character.}
+\item{query}{Character. A natural language command related to the styling of a ggplot.}
+}
+\value{
+An object of class 'gg' from the internal class system of 'ggplot2'
 }
 \description{
-Generic command to transform a query in natural language
-into a ggplot2 command.
+Converts a natural language query into a 'gg' object, which can be directly chained to a 'ggplot'-call. Queries should be related to the styling of the plot, such as, axis label font size, axis label title, legend, and similar.
+}
+\details{
+'gg_' calls the function 'gghelp', which maintains a database of keywords that match typical queries related to styling
+'ggplot2' graphs. Based on the users natural language query, the function tries to find the best match
+and then returns the ggplot2 command, such that the result of a call to 'gg_' can be chained directly to a 'ggplot()' call.
+}
+\examples{
+
+\dontrun{
+library(ggplot2)
+ggplot(data=iris,
+mapping=aes(x=Sepal.Length,
+           y=Petal.Length, color=Species))+
+ geom_point()+
+ gg_("rotate x-axis labels by 90°")+
+ gg_("set x-axis label to 'Length of Sepal'")
+ }
+
+}
+\seealso{
+\code{\link{gghelp}}
 }

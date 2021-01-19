@@ -2,15 +2,36 @@
 % Please edit documentation in R/ggx.R
 \name{gghelp}
 \alias{gghelp}
-\title{Helps you find a ggplot command for formatting the plot.}
+\title{Converts a natural language query into a 'ggplot2' command.}
 \usage{
-gghelp(wish = "", print = TRUE)
+gghelp(query = "", print = TRUE)
 }
 \arguments{
-\item{wish}{Character. A natural language command to ggplot2.}
+\item{query}{Character. A natural language command related to the styling of a ggplot.}
 
 \item{print}{Boolean. Print out the command or just return it.}
 }
+\value{
+Returns a string if there is a matching ggplot command in the database. Otherwise returns NULL.
+}
 \description{
-Helps you find a ggplot command for formatting the plot.
+Converts a natural language query into a 'ggplot2' command string. Queries should be related to the styling of the plot, such as, axis label font size, axis label title, legend, and similar.
+}
+\details{
+'gghelp' maintains a database of keywords that match typical queries related to styling
+'ggplot2' graphs. Based on the users natural language query, the function tries to find the best match
+and then returns the ggplot2 command as string.
+}
+\examples{
+
+gghelp("rotate x-axis labels by 90 degrees")
+
+gghelp("increase font size on x-axis label")
+
+gghelp("set x-axis label to 'Length of Sepal'")
+
+
+}
+\seealso{
+\code{\link{gg_}}
 }

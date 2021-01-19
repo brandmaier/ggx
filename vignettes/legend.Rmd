@@ -1,0 +1,44 @@
+---
+title: "Legend"
+author: "Andreas M. Brandmaier"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Legend}
+  %\VignetteEngine{knitr::knitr}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+
+library(ggplot2)
+library(ggx)
+```
+
+# Legend
+
+Remove the legend alltogether:
+
+```{r}
+ggplot(data=iris,
+       mapping=aes(x=Sepal.Length,
+                   y=Petal.Length, color=Species))+
+  ggtitle("Iris")+
+  geom_point()+
+  gg_("remove legend")
+```
+
+Change legend font size:
+
+```{r}
+ggplot(data=iris,
+       mapping=aes(x=Sepal.Length,
+                   y=Petal.Length, color=Species))+
+  ggtitle("Iris")+
+  geom_point()+
+  gg_("set font size of legend title to 40")
+```
