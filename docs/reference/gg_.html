@@ -6,8 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Generic command to transform a query in natural language
-into a ggplot2 command. — gg_ • ggx</title>
+<title>Transforms a  natural language query into a gg object — gg_ • ggx</title>
 
 
 <!-- jquery -->
@@ -40,10 +39,8 @@ into a ggplot2 command. — gg_ • ggx</title>
 
 
 
-<meta property="og:title" content="Generic command to transform a query in natural language
-into a ggplot2 command. — gg_" />
-<meta property="og:description" content="Generic command to transform a query in natural language
-into a ggplot2 command." />
+<meta property="og:title" content="Transforms a  natural language query into a gg object — gg_" />
+<meta property="og:description" content="Converts a natural language query into a 'gg' object, which can be directly chained to a 'ggplot'-call. Queries should be related to the styling of the plot, such as, axis label font size, axis label title, legend, and similar." />
 
 
 
@@ -75,7 +72,7 @@ into a ggplot2 command." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ggx</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
       </span>
     </div>
 
@@ -124,29 +121,49 @@ into a ggplot2 command." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Generic command to transform a query in natural language
-into a ggplot2 command.</h1>
+    <h1>Transforms a  natural language query into a gg object</h1>
     
     <div class="hidden name"><code>gg_.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Generic command to transform a query in natural language
-into a ggplot2 command.</p>
+    <p>Converts a natural language query into a 'gg' object, which can be directly chained to a 'ggplot'-call. Queries should be related to the styling of the plot, such as, axis label font size, axis label title, legend, and similar.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>gg_</span>(<span class='kw'>wish</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>gg_</span>(<span class='kw'>query</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>wish</th>
-      <td><p>Character.</p></td>
+      <th>query</th>
+      <td><p>Character. A natural language command related to the styling of a ggplot.</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
+    <p>An object of class 'gg' from the internal class system of 'ggplot2'</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>'gg_' calls the function 'gghelp', which maintains a database of keywords that match typical queries related to styling
+'ggplot2' graphs. Based on the users natural language query, the function tries to find the best match
+and then returns the ggplot2 command, such that the result of a call to 'gg_' can be chained directly to a 'ggplot()' call.</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><code><a href='gghelp.html'>gghelp</a></code></p></div>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'>
+<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>ggplot2</span>)
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='kw'>data</span><span class='kw'>=</span><span class='no'>iris</span>,
+<span class='kw'>mapping</span><span class='kw'>=</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='kw'>x</span><span class='kw'>=</span><span class='no'>Sepal.Length</span>,
+           <span class='kw'>y</span><span class='kw'>=</span><span class='no'>Petal.Length</span>, <span class='kw'>color</span><span class='kw'>=</span><span class='no'>Species</span>))+
+ <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span>()+
+ <span class='fu'>gg_</span>(<span class='st'>"rotate x-axis labels by 90°"</span>)+
+ <span class='fu'>gg_</span>(<span class='st'>"set x-axis label to 'Length of Sepal'"</span>)
+ }</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

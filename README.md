@@ -3,8 +3,14 @@
 ggx <img src="man/figures/ggx-hexsticker.png" align="right" width="120" />
 ==========================================================================
 
+[![cran
+version](http://www.r-pkg.org/badges/version/ggx)](https://cran.r-project.org/package=ggx)
+[![rstudio mirror
+downloads](http://cranlogs.r-pkg.org/badges/ggx)](https://github.com/metacran/cranlogs.app)
+[![Total downloads
+badge](https://cranlogs.r-pkg.org/badges/grand-total/ggx?color=blue)](https://CRAN.R-project.org/ggx)
 [![Lifecycle:
-stable](https://img.shields.io/badge/lifecycle-experimental-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+experimental](https://img.shields.io/badge/lifecycle-experimental-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![License: GPL
 v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 ![contributions](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)
@@ -49,7 +55,12 @@ then welcome!
 Installation
 ------------
 
-    # Install the development version from GitHub:
+Either install the latest stable version from CRAN:
+
+    install.packages("ggx")
+
+Or, install the development version from GitHub:
+
     # install.packages("devtools")
     devtools::install_github("brandmaier/ggx")
 

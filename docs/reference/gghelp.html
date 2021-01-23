@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Helps you find a ggplot command for formatting the plot. — gghelp • ggx</title>
+<title>Converts a natural language query into a 'ggplot2' command. — gghelp • ggx</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Helps you find a ggplot command for formatting the plot. — gghelp" />
-<meta property="og:description" content="Helps you find a ggplot command for formatting the plot." />
+<meta property="og:title" content="Converts a natural language query into a 'ggplot2' command. — gghelp" />
+<meta property="og:description" content="Converts a natural language query into a 'ggplot2' command string. Queries should be related to the styling of the plot, such as, axis label font size, axis label title, legend, and similar." />
 
 
 
@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ggx</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
       </span>
     </div>
 
@@ -121,23 +121,23 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Helps you find a ggplot command for formatting the plot.</h1>
+    <h1>Converts a natural language query into a 'ggplot2' command.</h1>
     
     <div class="hidden name"><code>gghelp.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Helps you find a ggplot command for formatting the plot.</p>
+    <p>Converts a natural language query into a 'ggplot2' command string. Queries should be related to the styling of the plot, such as, axis label font size, axis label title, legend, and similar.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>gghelp</span>(<span class='kw'>wish</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>print</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>gghelp</span>(<span class='kw'>query</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>print</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>wish</th>
-      <td><p>Character. A natural language command to ggplot2.</p></td>
+      <th>query</th>
+      <td><p>Character. A natural language command related to the styling of a ggplot.</p></td>
     </tr>
     <tr>
       <th>print</th>
@@ -145,7 +145,25 @@
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
+    <p>Returns a string if there is a matching ggplot command in the database. Otherwise returns NULL.</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>'gghelp' maintains a database of keywords that match typical queries related to styling
+'ggplot2' graphs. Based on the users natural language query, the function tries to find the best match
+and then returns the ggplot2 command as string.</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><code><a href='gg_.html'>gg_</a></code></p></div>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'>
+<span class='fu'>gghelp</span>(<span class='st'>"rotate x-axis labels by 90 degrees"</span>)</div><div class='output co'>#&gt; theme(axis.text.x = element_text(angle = 90)) </div><div class='input'>
+<span class='fu'>gghelp</span>(<span class='st'>"increase font size on x-axis label"</span>)</div><div class='output co'>#&gt; theme(axis.title.x=element_text(size=rel(2))) </div><div class='input'>
+<span class='fu'>gghelp</span>(<span class='st'>"set x-axis label to 'Length of Sepal'"</span>)</div><div class='output co'>#&gt; xlab('Length of Sepal') </div><div class='input'>
+
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
