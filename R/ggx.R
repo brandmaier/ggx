@@ -91,6 +91,20 @@ gghelp <- function(query="", print=TRUE) {
 
   if (!is.character(query)) { stop("Only character input is valid") }
 
+  # parse quote (do not yet transform to lower case to preserve upper/lowercase
+  # inside the quotes)
+  quote_matches <- unlist(
+    regmatches(query, gregexpr("[\"|'](.*?)[\"|']", query))
+  )
+
+  query <- gsub("[\"|'](.*?)[\"|']", "#quote#", query )
+
+  # now transform to lower case
+  # make the query lower-case (must come after quote extraction to
+  # preserve upper/lower cases in quotes) but should come before
+  # extraction of color values
+  query <- tolower(query)
+
   # parse numbers
   number_matches <- as.numeric(unlist(
     regmatches(query, gregexpr("[[:digit:]]+", query))
@@ -108,12 +122,7 @@ gghelp <- function(query="", print=TRUE) {
   # replace color by generic token
   query <- gsub(color_regexp, "#color#", query )
 
-  # parse quote
-  quote_matches <- unlist(
-    regmatches(query, gregexpr("[\"|'](.*?)[\"|']", query))
-  )
 
-  query <- gsub("[\"|'](.*?)[\"|']", "#quote#", query )
 
   # match target (not yet used)
   targets <- c()
@@ -121,15 +130,12 @@ gghelp <- function(query="", print=TRUE) {
   if (length(grep("y.axis", query, ignore.case = TRUE)) > 0) targets <- c(targets, "y-axis")
   if (length(grep("legend", query, ignore.case = TRUE)) > 0) targets <- c(targets, "legend")
 
-  # make the query lower-case (must come after token extraction to
-  # preserve quotes)
-  query <- tolower(query)
-
   # some replacements before tokenizing
   query<-gsub("x.axis","x-axis", query)
   query<-gsub("y.axis","y-axis", query)
   query<-gsub("\u0176"," degrees", query)
   query<-gsub("!|\\.|\\?|;|,", "", query)
+  query<-gsub("colour","color", query)
 
   # tokenize query
   tokenized_query <- strsplit(query, " ")[[1]]
