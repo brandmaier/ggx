@@ -58,6 +58,17 @@ dictionary <- list(
   list(c("set x-axis label #quote#"),"xlab(#quote#)"),
   list(c("set y-axis label #quote#"),"ylab(#quote#)"),
 
+  list(c("remove grid lines"),"theme(panel.grid.major = element_blank(),
+          panel.grid.minor = element_blank()))"),
+
+  list(c("remove background"), "theme(panel.background=element_blank())"),
+
+  list(c("set background color #color#"),"theme(panel.background = element_rect(fill = \"#color#\",
+                                colour = \"#color#\"))"),
+  list(c("set grid color #color#"),"theme(panel.grid.major = element_rect(fill = \"#color#\",
+                                colour = \"#color#\"),panel.grid.minor = element_rect(fill = \"#color#\",
+                                colour = \"#color#\") )   "),
+
   list(c("meaning of the universe life","geom_label(label=\"42\")"))
 
 )
