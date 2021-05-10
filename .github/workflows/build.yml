@@ -9,3 +9,7 @@ jobs:
     - uses: actions/checkout@v1
     - name: Zip Folder
       run: zip -r shinyapp.zip misc/*.R
+    - uses: actions/upload-artifact@v2
+        with:
+            name: ggx-shiny
+            path: shinyapp.zip
