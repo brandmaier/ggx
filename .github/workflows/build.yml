@@ -1,0 +1,11 @@
+name: Provide Shiny as ZIP
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Zip Folder
+      run: zip -r shinyapp.zip misc/*.R
