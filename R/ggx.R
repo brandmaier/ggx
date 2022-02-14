@@ -58,6 +58,9 @@ dictionary <- list(
   list(c("set x-axis label #quote#"),"xlab(#quote#)"),
   list(c("set y-axis label #quote#"),"ylab(#quote#)"),
 
+  list(c("wrap tidy x-axis label"),"scale_x_discrete(labels = function(x) stringr::str_wrap(x, width = 10))"),
+  list(c("wrap tidy y-axis label"),"scale_y_discrete(labels = function(x) stringr::str_wrap(x, width = 10))"),
+
   list(c("remove grid lines"),"theme(panel.grid.major = element_blank(),
           panel.grid.minor = element_blank()))"),
 
@@ -147,6 +150,7 @@ gghelp <- function(query="", print=TRUE) {
   query<-gsub("\u0176"," degrees", query)
   query<-gsub("!|\\.|\\?|;|,", "", query)
   query<-gsub("colour","color", query)
+  query<-gsub("labels","label", query)
 
   # tokenize query
   tokenized_query <- strsplit(query, " ")[[1]]

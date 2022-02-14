@@ -9,10 +9,10 @@ License: GPL-3
 Encoding: UTF-8
 LazyData: true
 Imports: sets, ggplot2
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1
 VignetteBuilder: knitr
 Suggests:
     knitr,
     rmarkdown,
-    markdown
-
+    markdown,
+    stringr
