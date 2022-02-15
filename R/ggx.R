@@ -59,7 +59,10 @@ dictionary <- list(
   list(c("set y-axis label #quote#"),"ylab(#quote#)"),
 
   list(c("wrap tidy x-axis label"),"scale_x_discrete(labels = function(x) stringr::str_wrap(x, width = 10))"),
+  list(c("wrap tidy x-axis label #number#"),"scale_x_discrete(labels = function(x) stringr::str_wrap(x, width = #number#))"),
+
   list(c("wrap tidy y-axis label"),"scale_y_discrete(labels = function(x) stringr::str_wrap(x, width = 10))"),
+  list(c("wrap tidy y-axis label #number#"),"scale_y_discrete(labels = function(x) stringr::str_wrap(x, width = #number#))"),
 
   list(c("remove grid lines"),"theme(panel.grid.major = element_blank(),
           panel.grid.minor = element_blank()))"),

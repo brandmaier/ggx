@@ -15,6 +15,7 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 
+library(tidyverse)
 library(ggplot2)
 library(ggx)
 ```
@@ -23,7 +24,7 @@ library(ggx)
 
 There are various ways to set the formatting of labels in plots. First and foremost, you may want to change the label text:
 
-```{r}
+```{r rename}
 ggplot(data=iris, 
        mapping=aes(x=Sepal.Length, 
                   y=Petal.Length, color=Species))+
@@ -35,7 +36,7 @@ ggplot(data=iris,
 
 ## Rotation
 
-```{r}
+```{r rotatedlabels}
 ggplot(data=iris, 
        mapping=aes(x=Sepal.Length, 
                   y=Petal.Length, color=Species))+
@@ -47,7 +48,9 @@ ggplot(data=iris,
 
 ## Colors
 
-```{r}
+The following `gg_`-commands illustrate how you can have axis labels appear in different colors.
+
+```{r coloredlabels}
 ggplot(data=iris, 
        mapping=aes(x=Sepal.Length, 
                   y=Petal.Length, color=Species))+
@@ -55,4 +58,13 @@ ggplot(data=iris,
   geom_point()+
   gg_("Paint the x-axis label in coral.")+
   gg_("The label of the y-axis should appear in purple.")
+```
+
+## Wrap long labels
+
+Long labels often produce ugly overlap. Avoid this with the 'wrap' keyword.
+
+```{r wrapped}
+ iris %>% tibble() %>% mutate(Species=recode(Species, 'setosa' = 'Iris setosa, the bristle-pointed iris', 'virginica' = 'Iris virginica, with the common name Virginia iris', 'versicolor'='Iris versicolor is also commonly known as the blue flag, harlequin blueflag, larger blue flag, northern blue flag, and poison flag')) %>% ggplot(aes(x=Species, y=Sepal.Length)) + geom_bar(stat="identity") +
+  gg_("wrap x-axis labels at 20 characters")
 ```

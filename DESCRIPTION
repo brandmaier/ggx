@@ -15,4 +15,5 @@ Suggests:
     knitr,
     rmarkdown,
     markdown,
-    stringr
+    stringr,
+    tidyverse
