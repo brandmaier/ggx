@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ggx</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.2</span>
       </span>
     </div>
 
@@ -39,7 +39,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -75,14 +75,13 @@
 
       
 
-      </header><script src="labels_files/header-attrs-2.5/header-attrs.js"></script><script src="labels_files/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="labels_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
-<script src="labels_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
+      </header><script src="labels_files/header-attrs-2.10/header-attrs.js"></script><script src="labels_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Labels</h1>
                         <h4 class="author">Andreas M. Brandmaier</h4>
             
-            <h4 class="date">2021-01-23</h4>
+            <h4 class="date">2022-02-15</h4>
       
       
       <div class="hidden name"><code>labels.Rmd</code></div>
@@ -95,40 +94,53 @@
 <h1 class="hasAnchor">
 <a href="#text" class="anchor"></a>Text</h1>
 <p>There are various ways to set the formatting of labels in plots. First and foremost, you may want to change the label text:</p>
-<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu">ggplot</span>(<span class="kw">data</span><span class="kw">=</span><span class="no">iris</span>,
-       <span class="kw">mapping</span><span class="kw">=</span><span class="fu">aes</span>(<span class="kw">x</span><span class="kw">=</span><span class="no">Sepal.Length</span>,
-                  <span class="kw">y</span><span class="kw">=</span><span class="no">Petal.Length</span>, <span class="kw">color</span><span class="kw">=</span><span class="no">Species</span>))+
-  <span class="fu">ggtitle</span>(<span class="st">"Iris"</span>)+
-  <span class="fu">geom_point</span>()+
-  <span class="fu"><a href="../reference/gg_.html">gg_</a></span>(<span class="st">"set the x-axis label to 'This is my x-axis'"</span>)+
-  <span class="fu"><a href="../reference/gg_.html">gg_</a></span>(<span class="st">"The y-axis label should be set to 'Welcome to the jungle', please"</span>)
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data<span class="op">=</span><span class="va">iris</span>, 
+       mapping<span class="op">=</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">Sepal.Length</span>, 
+                  y<span class="op">=</span><span class="va">Petal.Length</span>, color<span class="op">=</span><span class="va">Species</span><span class="op">)</span><span class="op">)</span><span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"Iris"</span><span class="op">)</span><span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span>
+  <span class="fu"><a href="../reference/gg_.html">gg_</a></span><span class="op">(</span><span class="st">"set the x-axis label to 'This is my x-axis'"</span><span class="op">)</span><span class="op">+</span>
+  <span class="fu"><a href="../reference/gg_.html">gg_</a></span><span class="op">(</span><span class="st">"The y-axis label should be set to 'Welcome to the jungle', please"</span><span class="op">)</span>
 <span class="co">#&gt; Registered S3 method overwritten by 'sets':</span>
 <span class="co">#&gt;   method        from   </span>
-<span class="co">#&gt;   print.element ggplot2</span></pre></body></html></div>
-<p><img src="labels_files/figure-html/unnamed-chunk-2-1.png" width="700"></p>
+<span class="co">#&gt;   print.element ggplot2</span></code></pre></div>
+<p><img src="labels_files/figure-html/rename-1.png" width="700"></p>
 <div id="rotation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#rotation" class="anchor"></a>Rotation</h2>
-<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="fu">ggplot</span>(<span class="kw">data</span><span class="kw">=</span><span class="no">iris</span>,
-       <span class="kw">mapping</span><span class="kw">=</span><span class="fu">aes</span>(<span class="kw">x</span><span class="kw">=</span><span class="no">Sepal.Length</span>,
-                  <span class="kw">y</span><span class="kw">=</span><span class="no">Petal.Length</span>, <span class="kw">color</span><span class="kw">=</span><span class="no">Species</span>))+
-  <span class="fu">ggtitle</span>(<span class="st">"Iris"</span>)+
-  <span class="fu">geom_point</span>()+
-  <span class="fu"><a href="../reference/gg_.html">gg_</a></span>(<span class="st">"Rotate the x-axis labels by 32°"</span>)+
-  <span class="fu"><a href="../reference/gg_.html">gg_</a></span>(<span class="st">"Rotate the y-axis labels by 172 degrees"</span>)</pre></body></html></div>
-<p><img src="labels_files/figure-html/unnamed-chunk-3-1.png" width="700"></p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data<span class="op">=</span><span class="va">iris</span>, 
+       mapping<span class="op">=</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">Sepal.Length</span>, 
+                  y<span class="op">=</span><span class="va">Petal.Length</span>, color<span class="op">=</span><span class="va">Species</span><span class="op">)</span><span class="op">)</span><span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"Iris"</span><span class="op">)</span><span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span>
+  <span class="fu"><a href="../reference/gg_.html">gg_</a></span><span class="op">(</span><span class="st">"Rotate the x-axis labels by 32°"</span><span class="op">)</span><span class="op">+</span>
+  <span class="fu"><a href="../reference/gg_.html">gg_</a></span><span class="op">(</span><span class="st">"Rotate the y-axis labels by 172 degrees"</span><span class="op">)</span></code></pre></div>
+<p><img src="labels_files/figure-html/rotatedlabels-1.png" width="700"></p>
 </div>
 <div id="colors" class="section level2">
 <h2 class="hasAnchor">
 <a href="#colors" class="anchor"></a>Colors</h2>
-<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="fu">ggplot</span>(<span class="kw">data</span><span class="kw">=</span><span class="no">iris</span>,
-       <span class="kw">mapping</span><span class="kw">=</span><span class="fu">aes</span>(<span class="kw">x</span><span class="kw">=</span><span class="no">Sepal.Length</span>,
-                  <span class="kw">y</span><span class="kw">=</span><span class="no">Petal.Length</span>, <span class="kw">color</span><span class="kw">=</span><span class="no">Species</span>))+
-  <span class="fu">ggtitle</span>(<span class="st">"Iris"</span>)+
-  <span class="fu">geom_point</span>()+
-  <span class="fu"><a href="../reference/gg_.html">gg_</a></span>(<span class="st">"Paint the x-axis label in coral."</span>)+
-  <span class="fu"><a href="../reference/gg_.html">gg_</a></span>(<span class="st">"The label of the y-axis should appear in purple."</span>)</pre></body></html></div>
-<p><img src="labels_files/figure-html/unnamed-chunk-4-1.png" width="700"></p>
+<p>The following <code>gg_</code>-commands illustrate how you can have axis labels appear in different colors.</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data<span class="op">=</span><span class="va">iris</span>, 
+       mapping<span class="op">=</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">Sepal.Length</span>, 
+                  y<span class="op">=</span><span class="va">Petal.Length</span>, color<span class="op">=</span><span class="va">Species</span><span class="op">)</span><span class="op">)</span><span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"Iris"</span><span class="op">)</span><span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span>
+  <span class="fu"><a href="../reference/gg_.html">gg_</a></span><span class="op">(</span><span class="st">"Paint the x-axis label in coral."</span><span class="op">)</span><span class="op">+</span>
+  <span class="fu"><a href="../reference/gg_.html">gg_</a></span><span class="op">(</span><span class="st">"The label of the y-axis should appear in purple."</span><span class="op">)</span></code></pre></div>
+<p><img src="labels_files/figure-html/coloredlabels-1.png" width="700"></p>
+</div>
+<div id="wrap-long-labels" class="section level2">
+<h2 class="hasAnchor">
+<a href="#wrap-long-labels" class="anchor"></a>Wrap long labels</h2>
+<p>Long labels often produce ugly overlap. Avoid this with the ‘wrap’ keyword.</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"> <span class="va">iris</span> <span class="op">%&gt;%</span> <span class="fu">tibble</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">mutate</span><span class="op">(</span>Species<span class="op">=</span><span class="fu">recode</span><span class="op">(</span><span class="va">Species</span>, <span class="st">'setosa'</span> <span class="op">=</span> <span class="st">'Iris setosa, the bristle-pointed iris'</span>, <span class="st">'virginica'</span> <span class="op">=</span> <span class="st">'Iris virginica, with the common name Virginia iris'</span>, <span class="st">'versicolor'</span><span class="op">=</span><span class="st">'Iris versicolor is also commonly known as the blue flag, harlequin blueflag, larger blue flag, northern blue flag, and poison flag'</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">Species</span>, y<span class="op">=</span><span class="va">Sepal.Length</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span>stat<span class="op">=</span><span class="st">"identity"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="../reference/gg_.html">gg_</a></span><span class="op">(</span><span class="st">"wrap x-axis labels at 20 characters"</span><span class="op">)</span></code></pre></div>
+<p><img src="labels_files/figure-html/wrapped-1.png" width="700"></p>
 </div>
 </div>
   </div>
@@ -148,7 +160,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
