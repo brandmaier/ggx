@@ -4,8 +4,8 @@
 # @return vector of keywords
 #
 extract_keywords <- function(entry) {
-  clauses <- entry[[1]]
-  sapply(clauses, function(x){strsplit(x,split = " ")})
+  clauses <- entry[[1]] 
+  sapply(clauses, function(x){strsplit(x, split = " ")})
 }
 
 #
@@ -27,11 +27,10 @@ dictionary <- list(
   list( c("rotate y-axis labels #number# degree","rotated y-axis label #number# degrees"),
         "theme(axis.text.y = element_text(angle = #number#))"),
 
-  list ( c("x-axis bold","x-axis boldface") , "theme(axis.text.x = element_text(face = \"bold\"))"),
-  list ( c("y-axis bold","y-axis boldface") , "theme(axis.text.y = element_text(face = \"bold\"))"),
-  list ( c("switch axes","switch x-axis y-axis","flip axes","flip x-axis y-axis","flip coordinates"), "coord_flip()"),
-  #  list ( c("remove hide legend *title")," theme(legend. title = element_blank()) "),
-  list ( c("remove hide rid lose legend"),"theme(legend.position = \"none\")"),
+  list(c("x-axis bold","x-axis boldface") , "theme(axis.text.x = element_text(face = \"bold\"))"),
+  list(c("y-axis bold","y-axis boldface") , "theme(axis.text.y = element_text(face = \"bold\"))"),
+  list(c("switch axes","switch x-axis y-axis","flip axes","flip x-axis y-axis","flip coordinates"), "coord_flip()"),
+  list(c("remove hide rid lose legend"),"theme(legend.position = \"none\")"),
   list(c("x-axis log logarithmic scale"),"scale_x_log10()"),
   list(c("y-axis log logarithmic scale"),"scale_y_log10()"),
   list(c("center title"),"theme(plot.title = element_text(hjust = 0.5))"),
@@ -74,8 +73,15 @@ dictionary <- list(
   list(c("set grid color #color#"),"theme(panel.grid.major = element_rect(fill = \"#color#\",
                                 colour = \"#color#\"),panel.grid.minor = element_rect(fill = \"#color#\",
                                 colour = \"#color#\") )   "),
-
-  list(c("meaning of the universe life","geom_label(label=\"42\")"))
+  list(c("facet wrap by with using #var#"), "facet_wrap(~#var#)"),
+  list(c("facet wrap by with using #var# vertical vertically column portrait"), "facet_wrap(~#var#, dir = \"v\")"),
+  list(c("facet wrap by with using #var# column columns cols col #number#"), "facet_wrap(~#var#, ncol = #number#)"),
+  list(c("facet wrap by with using #var# row rows #number#"), "facet_wrap(~#var#, nrow = #number#)"),
+  list(c("facet grid by with using #var#"), "facet_grid(. ~ #var#)"),
+  list(c("facet grid by with using #var# vertical column portrait"), "facet_grid(#var# ~ .)"),
+  list(c("facet grid by with using #var# by across with and #var#"), "facet_grid(#var# ~ #var#)"),
+  
+  list(c("meaning of the universe life"),"geom_label(label=\"42\")")
 
 )
 
@@ -84,6 +90,7 @@ dictionary <- list(
 #' @description Converts a natural language query into a 'ggplot2' command string. Queries should be related to the styling of the plot, such as, axis label font size, axis label title, legend, and similar.
 #'
 #' @param query Character. A natural language command related to the styling of a ggplot.
+#' @param data Character, optional. Name of the dataset being used or vector of variable names.
 #' @param print Boolean. Print out the command or just return it.
 #'
 #' @return Returns a string if there is a matching ggplot command in the database. Otherwise returns NULL.
@@ -95,18 +102,33 @@ dictionary <- list(
 #' gghelp("increase font size on x-axis label")
 #'
 #' gghelp("set x-axis label to 'Length of Sepal'")
+#' 
+#' gghelp("facet by Petal.Length", data = iris)
 #'
 #'
 #' @details 'gghelp' maintains a database of keywords that match typical queries related to styling
 #' 'ggplot2' graphs. Based on the users natural language query, the function tries to find the best match
-#' and then returns the ggplot2 command as string.
+#' and then returns the ggplot2 command as string. The optional 'data' parameter interprets column names.
 #'
 #' @seealso \code{\link{gg_}}
 #'
 #' @export
-gghelp <- function(query="", print=TRUE) {
+gghelp <- function(query="", data=NULL, print=TRUE) {
 
   if (!is.character(query)) { stop("Only character input is valid") }
+  cols_regexp <- data 
+  if (is.data.frame(data)) { 
+    cols_regexp <- paste0("\\b(", 
+                          paste0(names(data), "", collapse = "|"), ")\\b")
+  }
+  
+  # parse colnames (optional) 
+  col_matches <- unlist(
+      regmatches(query, gregexpr(cols_regexp, query))
+  )
+
+  # replace variable names by generic token (experimental)
+  query <- gsub(cols_regexp, "#var#", query)
 
   # parse quote (do not yet transform to lower case to preserve upper/lowercase
   # inside the quotes)
@@ -138,9 +160,8 @@ gghelp <- function(query="", print=TRUE) {
 
   # replace color by generic token
   query <- gsub(color_regexp, "#color#", query )
-
-
-
+  
+  
   # match target (not yet used)
   targets <- c()
   if (length(grep("x.axis", query, ignore.case = TRUE)) > 0) targets <- c(targets, "x-axis")
@@ -200,6 +221,12 @@ gghelp <- function(query="", print=TRUE) {
   if (length(quote_matches)>0) {
     result <- gsub("#quote#", quote_matches[1], result)
   }
+  
+  if (!is.null(col_matches)) {
+    for (i in seq_along(col_matches)) {
+      result <- sub("#var#", col_matches[i], result)
+    }
+  }
 
   # add some default for unknown tokens. TODO: think of something smarter
   if (result=="theme(axis.text.x = element_text(angle = #number#))") {
@@ -236,6 +263,7 @@ gghelp <- function(query="", print=TRUE) {
 #'
 #'
 #' @param query Character. A natural language command related to the styling of a ggplot.
+#' @param data Character, optional. Name of the dataset being used or vector of variable names.
 #'
 #' @return An object of class 'gg' from the internal class system of 'ggplot2'
 #'
@@ -258,8 +286,8 @@ gghelp <- function(query="", print=TRUE) {
 #' and then returns the ggplot2 command, such that the result of a call to 'gg_' can be chained directly to a 'ggplot()' call.
 #'
 #' @export
-gg_ <- function(query=NULL) {
-  ggresult <- gghelp(query=query, print=FALSE)
+gg_ <- function(query=NULL, data=NULL) {
+  ggresult <- gghelp(query=query, data=data, print=FALSE)
 
   if (is.null(ggresult)) {
     return(NULL)

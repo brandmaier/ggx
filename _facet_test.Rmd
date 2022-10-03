@@ -1,0 +1,36 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+
+
+```{r}
+library(ggplot2)
+
+diamonds <- ggplot2::diamonds
+
+p <- ggplot(data = diamonds, aes(x = carat, y = price)) + 
+  geom_col()
+```
+```{r}
+p
+```
+```{r}
+cols_regexp <- paste0("\\b(", paste0(names(diamonds), "", collapse = "|"), ")\\b")
+unlist(regmatches(q, gregexpr(cols_regexp, q)))
+strsplit(q, " ")[grep(cols_regexp, strsplit(q, ""))]
+
+
+gghelp(query = "facet by carat and cut", data = diamonds)
+
+ggplot(data = diamonds, aes(x = cut, y = price)) +
+  geom_col() +
+  gg_(query = "grid by carat vertical", data = diamonds)
+```
+```{r}
+data_cols <- names(diamonds)
+unlist(data_cols[match(c("carat", "cut"), data_cols)])
+```
+
+
