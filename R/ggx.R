@@ -127,9 +127,6 @@ gghelp <- function(query="", data=NULL, print=TRUE) {
       regmatches(query, gregexpr(cols_regexp, query))
   )
 
-  # replace variable names by generic token (experimental)
-  query <- gsub(cols_regexp, "#var#", query)
-
   # parse quote (do not yet transform to lower case to preserve upper/lowercase
   # inside the quotes)
   quote_matches <- unlist(
@@ -142,6 +139,10 @@ gghelp <- function(query="", data=NULL, print=TRUE) {
   # make the query lower-case (must come after quote extraction to
   # preserve upper/lower cases in quotes) but should come before
   # extraction of color values
+  # replace variable names by generic token (experimental)
+  query <- gsub(cols_regexp, "#var#", query)
+    ## Assume unique column names in order to be forgiving of capitalization
+  
   query <- tolower(query)
 
   # parse numbers
