@@ -4,3 +4,6 @@
 .Ruserdata
 *.Rproj 
 .Rbuildignore
+.wip
+*/_facet_test.Rmd
+*/_facet_test.nb.html
