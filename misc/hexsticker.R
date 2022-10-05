@@ -1,5 +1,6 @@
 # define colors
 fill_color <- "#00D6E4"
+#fill_color <- "#FF06E4"
 border_color <- "#000000"
 
 # hex sticker library

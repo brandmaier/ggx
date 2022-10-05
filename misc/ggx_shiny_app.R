@@ -7,6 +7,14 @@
 #    http://shiny.rstudio.com/
 #
 
+if (!("heyshiny" %in% installed.packages())) {
+if (!require("remotes")) {
+  install.packages("remotes")
+}
+remotes::install_github("jcrodriguez1989/heyshiny", dependencies = TRUE)
+}
+
+
 library(shiny)
 library("heyshiny")
 library(ggplot2)
@@ -16,14 +24,17 @@ cmd_stack <- list()
 
 app.env <- new.env()
 
+hey <- "gg"
+#hey <- "hey"
+
 
 # Define UI for application that draws a histogram
 ui <- fluidPage(
     useHeyshiny(language = "en-US"), # configure the heyshiny package
     titlePanel("ggx voice"),
-    #speechInput(inputId = "hey_cmd", command = "gg *msg"), # set the input
-    speechInput(inputId = "hey_cmd", command = "gg *msg"), # set the input
-#    speechInput(inputId = "hey_cmd"),
+    h4("This app does not work within Rstudio. Open the shiny URL in Google Chrome."),
+    h4("Say: Gee-Gee, paint the x-axis label red"),
+    speechInput(inputId = "hey_cmd", command = paste(hey, " *msg")), # set the input
     verbatimTextOutput("shiny_response"),
     plotOutput("plt",width = "400px",height="400px")
 )
@@ -44,9 +55,8 @@ buildPlot <- function( ) {
 # Define server logic required to draw a histogram
 server <- function(input, output) {
     
-  #  observe(
-   #          output$plt<-renderPlot( buildPlot() )
-    #         )
+  output$plt<-renderPlot({ buildPlot() })
+
     
     observeEvent(input$hey_cmd, {
         speech <- input$hey_cmd
@@ -57,12 +67,7 @@ server <- function(input, output) {
         speech <- gsub("quote", "\"", speech )
         
         res <- speech
-     #   res <- "Sorry, I don't know how to help with that yet"
-       # if (grepl("^random number", tolower(speech))) {
-    #        res <- paste0("Here is your random number: ", round(runif(1, 0, 8818)))
-    #    } else if (grepl("^repeat", tolower(speech))) {
-    #        res <- sub("repeat ", "", speech)
-    #    }
+
         output$shiny_response <- renderText(res)
         
         temp_cmd <- gg_(res)

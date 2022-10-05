@@ -1,0 +1,69 @@
+---
+title: "Faceting"
+author: "Cyrus Eosphoros"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Legend}
+  %\VignetteEngine{knitr::knitr}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+
+library(ggplot2)
+library(ggx)
+```
+
+# Faceting
+
+Faceting requires the optional parameter `data` be given either the original dataset used in your `ggplot()` call, or a vector of column names (the output of `names({your dataset here})`).
+
+It defaults to `facet_wrap()` over `facet_grid()`.
+
+## Basic facet_wrap()
+
+```{r facet_wrap}
+ggplot(data=iris,
+       mapping=aes(x=Sepal.Length,
+                   y=Petal.Length, color=Species))+
+  ggtitle("Iris")+
+  geom_point()+
+  gg_("facet by Species", data = iris)
+```
+
+## Vertical wrapping:
+
+```{r vertical wrapping}
+ggplot(data=iris,
+       mapping=aes(x=Sepal.Length,
+                   y=Petal.Length, color=Species))+
+  ggtitle("Iris")+
+  geom_point()+
+  gg_("facet by Species vertical", data = iris)
+```
+
+## Specify number of columns or rows:
+
+```{r specify ncol}
+ggplot(data=iris,
+       mapping=aes(x=Sepal.Length,
+                   y=Petal.Length, color=Species))+
+  ggtitle("Iris")+
+  geom_point()+
+  gg_("facet by Species 2 cols", data = iris)
+```
+
+## facet_grid()
+```{r facet_grid}
+ggplot(data=iris,
+       mapping=aes(x=Sepal.Length,
+                   y=Petal.Length, color=Species))+
+  ggtitle("Iris")+
+  geom_point()+
+  gg_("grid by Species and Petal.Width", data = iris)
+```

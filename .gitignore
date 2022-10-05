@@ -2,11 +2,9 @@
 .Rhistory
 .RData
 .Ruserdata
-<<<<<<< HEAD
-=======
 *.Rproj 
 .Rbuildignore
 .wip
 */_facet_test.Rmd
 */_facet_test.nb.html
->>>>>>> 5b079cae37dd0a353963be270c0b6ddc3dac14cd
+
