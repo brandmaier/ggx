@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,23 +33,17 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ggx</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.2</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -55,6 +51,9 @@
   <ul class="dropdown-menu" role="menu">
 <li>
       <a href="../articles/colors.html">Colors</a>
+    </li>
+    <li>
+      <a href="../articles/facets.html">Faceting</a>
     </li>
     <li>
       <a href="../articles/labels.html">Labels</a>
@@ -75,13 +74,13 @@
 
       
 
-      </header><script src="colors_files/header-attrs-2.10/header-attrs.js"></script><script src="colors_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Colors</h1>
-                        <h4 class="author">Andreas M. Brandmaier</h4>
+                        <h4 data-toc-skip class="author">Andreas M. Brandmaier</h4>
             
-            <h4 class="date">2022-02-15</h4>
+            <h4 data-toc-skip class="date">2022-10-05</h4>
       
       
       <div class="hidden name"><code>colors.Rmd</code></div>
@@ -90,27 +89,27 @@
 
     
     
-<div id="colors" class="section level1">
-<h1 class="hasAnchor">
-<a href="#colors" class="anchor"></a>Colors</h1>
+<div class="section level2">
+<h2 id="colors">Colors<a class="anchor" aria-label="anchor" href="#colors"></a>
+</h2>
 <p>Here is an example of how you can formulate queries related to theme-related colors using <code>gg_</code>-commands:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data<span class="op">=</span><span class="va">iris</span>, 
-       mapping<span class="op">=</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">Sepal.Length</span>, 
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>data<span class="op">=</span><span class="va">iris</span>, 
+       mapping<span class="op">=</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">Sepal.Length</span>, 
                   y<span class="op">=</span><span class="va">Petal.Length</span>, color<span class="op">=</span><span class="va">Species</span><span class="op">)</span><span class="op">)</span><span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"Iris"</span><span class="op">)</span><span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ggtitle</a></span><span class="op">(</span><span class="st">"Iris"</span><span class="op">)</span><span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span>
   <span class="fu"><a href="../reference/gg_.html">gg_</a></span><span class="op">(</span><span class="st">"paint the title red"</span><span class="op">)</span><span class="op">+</span>
   <span class="fu"><a href="../reference/gg_.html">gg_</a></span><span class="op">(</span><span class="st">"paint the x-axis label in green"</span><span class="op">)</span><span class="op">+</span>
   <span class="fu"><a href="../reference/gg_.html">gg_</a></span><span class="op">(</span><span class="st">"also, I want a purple y-axis label"</span><span class="op">)</span></code></pre></div>
 <p><img src="colors_files/figure-html/unnamed-chunk-2-1.png" width="700"></p>
 </div>
-<div id="valid-colors" class="section level1">
-<h1 class="hasAnchor">
-<a href="#valid-colors" class="anchor"></a>Valid Colors</h1>
+<div class="section level2">
+<h2 id="valid-colors">Valid Colors<a class="anchor" aria-label="anchor" href="#valid-colors"></a>
+</h2>
 <p>The <code>ggx</code> package matches valid base R colors. The list of all valid colors, such as those:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/grDevices/colors.html">colors</a></span><span class="op">(</span><span class="op">)</span>, n<span class="op">=</span><span class="fl">20</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/grDevices/colors.html" class="external-link">colors</a></span><span class="op">(</span><span class="op">)</span>, n<span class="op">=</span><span class="fl">20</span><span class="op">)</span>
 <span class="co">#&gt;  [1] "white"         "aliceblue"     "antiquewhite"  "antiquewhite1"</span>
 <span class="co">#&gt;  [5] "antiquewhite2" "antiquewhite3" "antiquewhite4" "aquamarine"   </span>
 <span class="co">#&gt;  [9] "aquamarine1"   "aquamarine2"   "aquamarine3"   "aquamarine4"  </span>
@@ -130,11 +129,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Andreas M. Brandmaier.</p>
+  <p></p>
+<p>Developed by Andreas M. Brandmaier.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer>
@@ -142,6 +143,8 @@
 
   
 
+
+  
 
   </body>
 </html>

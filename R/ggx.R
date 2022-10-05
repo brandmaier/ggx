@@ -115,17 +115,28 @@ dictionary <- list(
 #' @export
 gghelp <- function(query="", data=NULL, print=TRUE) {
 
+  # validate input - admit only character input
   if (!is.character(query)) { stop("Only character input is valid") }
-  cols_regexp <- data 
-  if (is.data.frame(data)) { 
+  if(is.null(query)) {stop("You need to ask me to do something!")}
+  
+  if (!is.null(data)) {
+   cols_regexp <- data 
+   if (is.data.frame(data)) { 
     cols_regexp <- paste0("\\b(", 
                           paste0(names(data), "", collapse = "|"), ")\\b")
+   }
+
+   
+   # parse colnames (optional) 
+   col_matches <- unlist(
+     regmatches(query, gregexpr(cols_regexp, query))
+   )   
+   
+  } else {
+    cols_regexp <- NULL
+    col_matches <- NULL
   }
-  
-  # parse colnames (optional) 
-  col_matches <- unlist(
-      regmatches(query, gregexpr(cols_regexp, query))
-  )
+
 
   # parse quote (do not yet transform to lower case to preserve upper/lowercase
   # inside the quotes)
@@ -140,7 +151,8 @@ gghelp <- function(query="", data=NULL, print=TRUE) {
   # preserve upper/lower cases in quotes) but should come before
   # extraction of color values
   # replace variable names by generic token (experimental)
-  query <- gsub(cols_regexp, "#var#", query)
+  if (!is.null(data))
+    query <- gsub(cols_regexp, "#var#", query)
     ## Assume unique column names in order to be forgiving of capitalization
   
   query <- tolower(query)
