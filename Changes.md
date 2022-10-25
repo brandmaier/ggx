@@ -1,3 +1,7 @@
+# 0.1.3
+
+- added facet wrap support; contributed by Cyrus E
+
 # 0.1.2
 
 - added functions to change background and grid color
